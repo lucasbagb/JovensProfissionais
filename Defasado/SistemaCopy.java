@@ -60,7 +60,7 @@ public class SistemaCopy {
 		gerente.setUsuario(usuario2);
 		gerente.setComissao(500.00);
 		listaFuncionario.add(gerente);
-		Vendedor vendedor = new Vendedor(null, null, 0, null);
+		Vendedor vendedor = new Vendedor(null, null, 0);
 		vendedor.setNome("Kamila Rodrigues");
 		// vendedor.setReferencia("ven001");
 		vendedor.setUsuario(usuario3);
@@ -320,7 +320,7 @@ public class SistemaCopy {
 							break;
 
 						case 2: // cadastro de vendedores
-							Vendedor vendedor0 = new Vendedor(loginUsuario, loginUsuario, loginSenha, loginUsuario);
+							Vendedor vendedor0 = new Vendedor(loginUsuario, loginUsuario, loginSenha);
 							break;
 
 						default:

@@ -41,16 +41,24 @@ public class TelaCadVendedores {
 						&& !(vc.ValidadorCamposFuncionarios(nome, user, password, password1))) {
 
 					Vendedor vendedor = new Vendedor(nome.getText(), user.getText(),
-							Integer.parseInt(password.getText()), gerente.getText());
-					ManipuladorVendedores mv = new ManipuladorVendedores();
-					try {
-						mv.escreveCadastros(vendedor.toString());
-						mv.fechaManipulador();
-					} catch (IOException ioe) {
-						System.out.println(ioe.getStackTrace());
+							Integer.parseInt(password.getText()));
+
+					if (vendedor.cruzaDadosGerente(gerente.getText())) {
+
+						ManipuladorVendedores mv = new ManipuladorVendedores();
+						try {
+							mv.escreveCadastros(vendedor.toString());
+							mv.fechaManipulador();
+						} catch (IOException ioe) {
+							System.out.println(ioe.getStackTrace());
+						}
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.",
+								"Cadastro de novo vendedor", JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Não há gerentes cadastrados no sistema com esse nome! Cheque a sintaxe e/ou registros",
+								"Cadastro - Vendedor", JOptionPane.ERROR_MESSAGE);
 					}
-					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Cadastro de novo vendedor",
-							JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			} else {
