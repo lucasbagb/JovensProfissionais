@@ -13,9 +13,9 @@ public abstract class ManipuladorArquivo {
 	protected int colunas;
 
 	// Escreve no arquivo para o qual foi instanciado.
-	private PrintWriter escritorArquivo;
+	protected PrintWriter escritorArquivo;
 	// Lê o arquivo para o qual foi instanciado.
-	private BufferedReader lerArquivo;
+	protected BufferedReader lerArquivo;
 
 	public ManipuladorArquivo(String caminhoArquivo, int colunas) {
 		this.colunas = colunas;
@@ -64,6 +64,7 @@ public abstract class ManipuladorArquivo {
 
 		escritorArquivo = new PrintWriter(new FileWriter(arquivo, true));
 		lerArquivo = new BufferedReader(new FileReader(arquivo));
+		lerArquivo.mark(4000);
 		disponibilizaCadastros();
 	}
 
@@ -93,25 +94,10 @@ public abstract class ManipuladorArquivo {
 	 * @see percorreCadastrosGerais
 	 * @throws IOException
 	 */
-	public void disponibilizaCadastros() throws IOException {
+	public abstract void disponibilizaCadastros() throws IOException;
 
-		int qntdLinhas = percorreCadastrosGerais();
-
-		this.campo = new String[qntdLinhas][this.colunas];
-
-		String linha = lerLinha();
-
-		while (linha != null) {
-			String[] c = linha.split(";");
-			for (int i = 0; i < qntdLinhas; i++) {
-				for (int j = 0; j < this.colunas; j++) {
-					this.campo[i][j] = c[j];
-				}
-			}
-			linha = lerLinha();
-		}
-	}
-
+	public abstract String getLinha(int indice);
+	
 	public void escreveCadastros(String cadastro) throws IOException {
 		String linha = lerLinha();
 		while (linha != null) {
@@ -132,11 +118,14 @@ public abstract class ManipuladorArquivo {
 		for (int i = 0; i < this.campo.length; i++) {
 			for (int j = 0; j < this.campo[0].length; j++) {
 				System.out.print(this.campo[i][j]);
-				System.out.print("\t");
+				if (i != (this.campo.length - 1)){
+					System.out.print("\t");
+				}
 			}
 			System.out.println();
 		}
 	}
+	
 
 	public void fechaManipulador() throws IOException {
 		this.escritorArquivo.close();
