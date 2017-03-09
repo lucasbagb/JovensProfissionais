@@ -24,8 +24,6 @@ public class TelaCadastros {
 				tf.JTPFuncionarios();
 				break;
 			default:
-				TelaLogin tl = new TelaLogin();
-				tl.JTPLogin();
 				repeticao = 1;
 				break;
 
