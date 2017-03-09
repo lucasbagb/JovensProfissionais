@@ -47,6 +47,11 @@ public class TelaLogin {
 					JOptionPane.ERROR_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
+		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 6)) {
+			JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Login",
+					JOptionPane.ERROR_MESSAGE);
+			TelaLogin tl = new TelaLogin();
+			tl.JTPLogin();
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 0)) {
 			JOptionPane.showMessageDialog(null, "Usuário inválido, verifique os seus dados.", "Login",
 					JOptionPane.ERROR_MESSAGE);
@@ -114,8 +119,11 @@ public class TelaLogin {
 			return 0;
 
 		} catch (java.lang.NumberFormatException x) {
-			return 5;
-
+			if (user.getText().isEmpty() || password.getText().isEmpty()) {
+				return 6;
+			} else {
+				return 5;
+			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 			return 0;

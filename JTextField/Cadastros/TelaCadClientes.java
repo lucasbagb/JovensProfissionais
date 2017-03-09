@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import DAO.ManipuladorClientes;
 import Entidades.Cliente;
-import JTextField.TelaBoasVindas;
 import Validadores.ValidaCadastro;
 
 public class TelaCadClientes {
@@ -68,8 +67,6 @@ public class TelaCadClientes {
 
 			} else {
 
-				TelaBoasVindas tbv = new TelaBoasVindas();
-				tbv.JTPBoasVindas();
 				repetidor = 1;
 
 			}

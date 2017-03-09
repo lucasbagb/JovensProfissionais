@@ -9,7 +9,6 @@ import DAO.ManipuladorCarros;
 import Entidades.Carro;
 import JTextField.HintTextField;
 import JTextField.HintTextFieldPersist;
-import JTextField.TelaCadastros;
 import Validadores.ValidaCadastro;
 
 public class TelaCadCarros {
@@ -52,13 +51,6 @@ public class TelaCadCarros {
 				JOptionPane.showMessageDialog(null, "Favor preencher todos os campos!", "Cadastro de novo usuário",
 						JOptionPane.ERROR_MESSAGE);
 			}
-
-		} else {
-
-			TelaCadastros tc = new TelaCadastros();
-			tc.JTPCadastros();
-
 		}
-
 	}
 }

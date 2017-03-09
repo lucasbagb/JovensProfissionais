@@ -2,7 +2,7 @@ package Testes;
 
 import JTextField.Cadastros.TelaCadCarros;
 
-public class TestaJTF {
+public class TestaJulio {
 
 	public static void main(String[] args) {
 
