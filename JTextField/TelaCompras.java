@@ -6,5 +6,4 @@ public class TelaCompras {
 		String[] cliente = campo.split(";");
 		
 	}
-
 }

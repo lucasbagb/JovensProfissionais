@@ -8,7 +8,7 @@ import JTextField.Cadastros.TelaCadFuncionarios;
 public class TelaCadastros {
 
 	public void JTPCadastros() {
-		int repeticao = 0;
+		int repetidor = 0;
 		do {
 			Object[] options = { "Carro", "Funcionário", "Voltar" };
 
@@ -24,11 +24,11 @@ public class TelaCadastros {
 				tf.JTPFuncionarios();
 				break;
 			default:
-				repeticao = 1;
+				repetidor = 1;
 				break;
 
 			}
-		} while (repeticao == 0);
+		} while (repetidor == 0);
 	}
 
 }
