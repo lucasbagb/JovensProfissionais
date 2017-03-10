@@ -38,7 +38,7 @@ public class TelaLogin {
 			TelaVendedores tv = new TelaVendedores();
 			tv.JTPVendedores(userData);
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 4)) {
-			JOptionPane.showMessageDialog(null, "Senha inválida. Tente novamente.", "Login",
+			JOptionPane.showMessageDialog(null, "Senha e/ou username incorretos. Tente novamente.", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
@@ -73,23 +73,24 @@ public class TelaLogin {
 			// ma.disponibilizaCadastros();
 
 			for (int i = 0; i < ma.clientes.length; i++) {
-				// o programa não acessa \/
-				if (usuario.equals(ma.clientes[i][0].trim())) {
-					if (senha == Integer.parseInt(ma.clientes[i][1])) {
+				if (ma.clientes[i][0] != null) {
+					if (usuario.equals(ma.clientes[i][0])) {
+						if (senha == Integer.parseInt(ma.clientes[i][1])) {
 
-						StringBuilder linha = new StringBuilder();
+							StringBuilder linha = new StringBuilder();
 
-						for (int j = 0; j < ma.clientes[0].length; j++) {
-							linha.append(ma.clientes[i][j]);
-							if (j != (ma.clientes[0].length - 1)) {
-								linha.append(";");
+							for (int j = 0; j < ma.clientes[0].length; j++) {
+								linha.append(ma.clientes[i][j]);
+								if (j != (ma.clientes[0].length - 1)) {
+									linha.append(";");
+								}
 							}
-						}
 
-						userData = linha.toString();
-						return 1;
-					} else if (i == ma.clientes.length - 1) {
-						return 4;
+							userData = linha.toString();
+							return 1;
+						} else if (i == ma.clientes.length - 1) {
+							continue;
+						}
 					}
 				}
 			}
@@ -100,21 +101,23 @@ public class TelaLogin {
 			// mg.disponibilizaCadastros();
 
 			for (int j = 0; j < mg.gerentes.length; j++) {
-				if (usuario.equals(mg.gerentes[j][0].trim())) {
-					if (senha == Integer.parseInt(ma.campo[j][1])) {
-						StringBuilder linha = new StringBuilder();
+				if (mg.gerentes[j][0] != null) {
+					if (usuario.equals(mg.gerentes[j][0])) {
+						if (senha == Integer.parseInt(ma.campo[j][1])) {
+							StringBuilder linha = new StringBuilder();
 
-						for (int k = 0; k < ma.clientes[0].length; k++) {
-							linha.append(ma.clientes[j][k]);
-							if (k != (ma.clientes[0].length - 1)) {
-								linha.append(";");
+							for (int k = 0; k < ma.clientes[0].length; k++) {
+								linha.append(ma.clientes[j][k]);
+								if (k != (ma.clientes[0].length - 1)) {
+									linha.append(";");
+								}
 							}
-						}
 
-						userData = linha.toString();
-						return 2;
-					} else {
-						return 4;
+							userData = linha.toString();
+							return 2;
+						} else {
+							continue;
+						}
 					}
 				}
 			}
@@ -125,22 +128,26 @@ public class TelaLogin {
 			// mv.disponibilizaCadastros();
 
 			for (int k = 0; k < mv.vendedores.length; k++) {
-				if (usuario.equals(mv.vendedores[k][0].trim())) {
-					if (senha == Integer.parseInt(ma.campo[k][1])) {
-						StringBuilder linha = new StringBuilder();
+				if (mv.vendedores[k][0] != null) {
+					if (usuario.equals(mv.vendedores[k][0].trim())) {
+						if (senha == Integer.parseInt(ma.campo[k][1])) {
+							StringBuilder linha = new StringBuilder();
 
-						for (int l = 0; l < ma.clientes[0].length; l++) {
-							linha.append(ma.clientes[k][l]);
-							if (l != (ma.clientes[0].length - 1)) {
-								linha.append(";");
+							for (int l = 0; l < ma.clientes[0].length; l++) {
+								linha.append(ma.clientes[k][l]);
+								if (l != (ma.clientes[0].length - 1)) {
+									linha.append(";");
+								}
 							}
-						}
 
-						userData = linha.toString();
-						return 3;
-					} else {
-						return 4;
+							userData = linha.toString();
+							return 3;
+						} else {
+							return 4;
+						}
 					}
+				} else {
+					return 4;
 				}
 			}
 			mv.fechaManipulador();

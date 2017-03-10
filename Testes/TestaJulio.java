@@ -1,16 +1,17 @@
 package Testes;
 
-import JTextField.TelaCompras;
+import JTextField.Cadastros.TelaCadFuncionarios;
 
 public class TestaJulio {
 
 	public static void main(String[] args) {
 
-		TelaCompras tc = new TelaCompras();
+//		TelaBoasVindas tbv = new TelaBoasVindas();
+//		
+//		tbv.JTPBoasVindas();
 		
-		String campo = "jcesar; 123; cpf; nome; telefone";
-		
-		tc.JTPCompras(campo);
+		TelaCadFuncionarios tf = new TelaCadFuncionarios();
+		tf.JTPFuncionarios();
 
 	}
 

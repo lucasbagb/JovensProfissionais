@@ -58,8 +58,6 @@ public class TelaCadClientes {
 								"Cadastro de novo cliente", JOptionPane.INFORMATION_MESSAGE);
 						repetidor = 1;
 					}
-					// iniciar validador de cadastro (tela de validação)
-					// realizar efetivamente o cadastro no banco
 				} catch (java.lang.NumberFormatException x) {
 					JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!", "Login",
 							JOptionPane.ERROR_MESSAGE);
