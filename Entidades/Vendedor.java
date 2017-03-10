@@ -27,6 +27,15 @@ public class Vendedor extends Funcionario {
 		this.gerente = gerente;
 	}
 
+	/**
+	 * Percorre os cadastros de {@link Gerente Gerente} para o atributo
+	 * <code>gerenteNome</code> em input, para checagem de existência de
+	 * registro de tal.
+	 * 
+	 * @param gerenteNome
+	 * @return <code>true</code> se existir um gerente com o
+	 *         nome inserido.
+	 */
 	public boolean cruzaDadosGerente(String gerenteNome) {
 
 		this.myManager = new ManipuladorGerentes();
