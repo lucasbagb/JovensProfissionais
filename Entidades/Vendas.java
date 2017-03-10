@@ -6,6 +6,17 @@ import java.util.Calendar;
 import DAO.ManipuladorGerentes;
 import DAO.ManipuladorVendedores;
 
+/**
+ * A classe <code>Vendas</code> é uma classe pública que coordena diversos
+ * parâmetros das classes {@link Gerente Gerente}, {@link Vendedor Vendedor},
+ * {@link Cliente Cliente} e {@link Carro Carro}, de modo a registrar a
+ * interação entre tais Classes na realização de vendas em múltiplos meios. Esta
+ * é uma primariamente uma classe de efetuação de registros de tais parâmetros,
+ * feita para <code>databases</code> de arquivos <code>.csv</code>.
+ * 
+ * @author Lucas Amorim, Julio Silva
+ *
+ */
 public class Vendas {
 
 	// variáveis
@@ -39,6 +50,19 @@ public class Vendas {
 		this.cliente = cliente;
 	}
 
+	public String getQuantidadeParcelas() {
+		return "O pagamento foi feito em :" + quantidadeParcelas + "parcelas.";
+	}
+
+	public void setQuantidadeParcelas(int quantidadeParcelas) {
+		this.quantidadeParcelas = quantidadeParcelas;
+	}
+
+	/**
+	 * Setter de data da transação, toma como parâmetro a instância de momento
+	 * da classe <code>Calendar</code> e a armazena num vetor local.
+	 * 
+	 */
 	public void setData() {
 		Calendar dataTransacao = Calendar.getInstance();
 		data[0] = dataTransacao.get(Calendar.DAY_OF_MONTH);
@@ -48,28 +72,39 @@ public class Vendas {
 		data[4] = dataTransacao.get(Calendar.MINUTE);
 	}
 
+	/**
+	 * Getter da data de transação parametrizada na venda.
+	 * 
+	 * @return data de transação formatada.
+	 */
 	public String getData() {
 		return "Data da transação: " + data[0] + "/" + data[1] + "/" + data[2] + " - " + data[3] + ":" + data[4] + ".";
-	}
-
-
-	public String getQuantidadeParcelas() {
-		return "O pagamento foi feito em :" + quantidadeParcelas + "parcelas.";
-	}
-
-	public void setQuantidadeParcelas(int quantidadeParcelas) {
-		this.quantidadeParcelas = quantidadeParcelas;
 	}
 
 	// métodos
 	// ------------------------------------------------------------------
 
+	/**
+	 * Mostra sequencialmente os parâmetros-padrão de uma venda, em formato
+	 * adaptado para inserção em arquivos <code>.csv</code>
+	 * 
+	 * @return parâmetros da venda, separados por <code>;</code>
+	 */
 	public String toStringVendas() {
 		return (this.carro.getMarca() + ";" + this.carro.getModelo() + ";" + this.carro.getPlaca() + ";"
 				+ this.cliente.getNome() + ";" + this.cliente.getCpf() + ";" + this.getData() + ";"
 				+ this.getQuantidadeParcelas());
 	}
 
+	/**
+	 * Mostra sequencialmente os parâmetros-padrão de adições de comissão, para
+	 * as classes {@link Gerente <code>Gerente</code>} e {@link Vendedor
+	 * <code>Vendedor</code>}, em formato adaptado para inserção em arquivos
+	 * <code>.csv</code>
+	 * 
+	 * @param objeto
+	 * @throws IOException
+	 */
 	public void toStringComissao(Object objeto) throws IOException {
 		if (objeto instanceof Gerente) {
 
