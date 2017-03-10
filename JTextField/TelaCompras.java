@@ -3,7 +3,11 @@ package JTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import DAO.ManipuladorCarros;
+
 public class TelaCompras {
+	
+	static String[] carData;
 
 	public void JTPCompras(String campo) {
 
@@ -11,9 +15,8 @@ public class TelaCompras {
 		// cliente[] = username, password, cpf, nome, telefone
 
 		// implementação do acesso ao banco
-
-		String[][] listaCarros = null; // acrescer new String e as dimensões
-		// o String listaCarros deve ser preenchido pelos dados do BD
+		ManipuladorCarros mc = new ManipuladorCarros();
+		String[][] listaCarros = mc.carros;
 		
 		int repetidor = 1;
 		do {
@@ -37,11 +40,11 @@ public class TelaCompras {
 
 	public String[] JOPCompras(String[][] carros) {
 
-		String[] carrosMarcasModelos = new String[carros.length];
+		String[] carrosMarcasModelos = new String[carros.length - 1];
 
-		for (int i = 0; i < carros.length; i++) {
+		for (int i = 0; i < (carros.length - 1); i++) {
 
-			carrosMarcasModelos[i] = (i) + "." + carros[i][0] + " " + carros[i][1];
+			carrosMarcasModelos[i] = (i) + " · " + carros[i][0] + " " + carros[i][1];
 
 			System.out.println(carrosMarcasModelos[i]);
 
@@ -54,8 +57,8 @@ public class TelaCompras {
 
 		if (carroEscolhido != null) {
 			// avança a tela, mostra detalhes do carro
-
-			String[] escolha = carroEscolhido.split(".");
+			String[] escolha = new String[2];
+			escolha = carroEscolhido.split(" ·");
 
 			int x = Integer.parseInt(escolha[0]);
 
