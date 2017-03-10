@@ -54,6 +54,8 @@ public abstract class ManipuladorArquivo {
 	 * @param caminhoArquivo
 	 *            : O caminho do arquivo a ser aberto/criado
 	 * @throws IOException
+	 * @see {@link #escritorArquivo}, {@link #lerArquivo},
+	 *      {@link #disponibilizaCadastros()}
 	 */
 	public void abreArquivo(String caminhoArquivo) throws IOException {
 		File arquivo = new File(caminhoArquivo);
@@ -97,7 +99,7 @@ public abstract class ManipuladorArquivo {
 	public abstract void disponibilizaCadastros() throws IOException;
 
 	public abstract String getLinha(int indice);
-	
+
 	public void escreveCadastros(String cadastro) throws IOException {
 		String linha = lerLinha();
 		while (linha != null) {
@@ -109,24 +111,30 @@ public abstract class ManipuladorArquivo {
 	}
 
 	/**
-	 * Imprime os dados provenientes da variável manipulável criada no método
-	 * <code>transcreveCadastros</code>.
+	 * Imprime os dados provenientes da variável manipulável criada dentro de
+	 * uma das <b>classes filhas</b> de <code>ManipuladorArquivo</code>.
 	 * 
-	 * @see transcreveCadastros
+	 * @see {@link ManipuladorCarros}, {@link ManipuladorClientes},
+	 *      {@link ManipuladorGerentes}, {@link ManipuladorVendedores}
 	 */
 	public void imprimeCadastros() {
 		for (int i = 0; i < this.campo.length; i++) {
 			for (int j = 0; j < this.campo[0].length; j++) {
 				System.out.print(this.campo[i][j]);
-				if (i != (this.campo.length - 1)){
+				if (i != (this.campo.length - 1)) {
 					System.out.print("\t");
 				}
 			}
 			System.out.println();
 		}
 	}
-	
 
+	/**
+	 * Fecha as variáveis de tipo <code>BufferedReader</code> e
+	 * <code>PrintWriter</code> do <code>ManipuladorArquivo</code>
+	 * 
+	 * @throws IOException
+	 */
 	public void fechaManipulador() throws IOException {
 		this.escritorArquivo.close();
 		this.lerArquivo.close();
