@@ -21,6 +21,8 @@ public class ManipuladorCarros extends ManipuladorArquivo {
 	@Override
 	public void disponibilizaCadastros() throws IOException {
 
+		this.lerArquivo.reset();
+		
 		int qntdLinhas = percorreCadastrosGerais();
 
 		this.carros = new String[qntdLinhas][this.colunas];

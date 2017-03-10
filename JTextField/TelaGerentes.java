@@ -21,8 +21,8 @@ public class TelaGerentes {
 
 			case 1:
 				// vendas
-				TelaVendas tv = new TelaVendas(gerente);
-				tv.JTPVendas();
+				TelaVendas tv = new TelaVendas(gerente, 2);
+				tv.JTPVendas(gerente, 2);
 				break;
 
 			case 2:
