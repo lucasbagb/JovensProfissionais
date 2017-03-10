@@ -1,5 +1,12 @@
 package Entidades;
 
+/**
+ * A classe <code>Carro</code> é uma classe pública e possui
+ * <code>Override</code> do método {@link #toString()}.
+ * 
+ * @author Lucas Amorim, Julio Silva
+ *
+ */
 public class Carro {
 
 	public Carro(String marca, String modelo, String placa, double preco) {
@@ -9,6 +16,7 @@ public class Carro {
 		this.preco = preco;
 	}
 
+	private final double margemLucro = 1.28;
 	private String marca;
 	private String modelo;
 	private String placa;
@@ -42,13 +50,18 @@ public class Carro {
 		return preco;
 	}
 
+	/**
+	 * Determina o valor de revenda do veículo com base na {@link #margemLucro}.
+	 * 
+	 * @param precoCompra
+	 */
 	public void setPreco(double precoCompra) {
-		int a = (int)(precoCompra*1.28);
-		a = (int) ((a/500)+1);
+		int a = (int) (precoCompra * margemLucro);
+		a = (int) ((a / 500) + 1);
 		a = a * 500;
 		this.preco = a;
 	}
-	
+
 	@Override
 	public String toString() {
 		return (this.marca + ";" + this.modelo + ";" + this.placa + ";" + this.preco);
