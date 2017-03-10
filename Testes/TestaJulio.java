@@ -1,12 +1,16 @@
 package Testes;
 
+import JTextField.TelaCompras;
+
 public class TestaJulio {
 
 	public static void main(String[] args) {
 
-//		TelaGerentes tc = new TelaGerentes();
-//
-//		tc.JTPGerentes();
+		TelaCompras tc = new TelaCompras();
+		
+		String campo = "jcesar; 123; cpf; nome; telefone";
+		
+		tc.JTPCompras(campo);
 
 	}
 

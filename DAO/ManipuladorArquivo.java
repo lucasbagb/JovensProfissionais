@@ -7,6 +7,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * A classe <code>ManipuladorArquivo</code> é uma classe pública e abstrata, que
+ * trata explicitamente da manipulação dos arquivos de extensão
+ * <code>.csv</code> localizados na database local. Além de abrir, ler, escrever
+ * e fechar arquivos, a classe também propõe um modelo de método de
+ * <em>transcrição</em> de arquivos para variáveis locais, o método abstrato
+ * {@link #disponibilizaCadastros()}.
+ * 
+ * @author Julio Silva, Lucas Amorim
+ * @see {@link ManipuladorCarros}, {@link ManipuladorClientes},
+ *      {@link ManipuladorGerentes}, {@link ManipuladorVendedores}
+ *
+ */
 public abstract class ManipuladorArquivo {
 
 	public String[][] campo;
@@ -27,7 +40,7 @@ public abstract class ManipuladorArquivo {
 	}
 
 	/**
-	 * Lê uma linha da origem ligada ao <code>BufferedReader</code>.
+	 * Lê uma linha da origem ligada ao <code>BufferedReader</code> da classe.
 	 * 
 	 * @return A linha lida pelo <code>BufferedReader</code>
 	 * @throws IOException
@@ -98,8 +111,25 @@ public abstract class ManipuladorArquivo {
 	 */
 	public abstract void disponibilizaCadastros() throws IOException;
 
+	/**
+	 * Percorre a <code>database</code> do Aplicativo para percorrê-la até o
+	 * <b>índice</b> parametrizado, então populando uma variável local com os
+	 * dados do <code>.csv</code> percorrido.
+	 * 
+	 * @param indice
+	 * @return <b>String</b> que representa a linha correspondente ao
+	 *         <em>índice</em>
+	 */
 	public abstract String getLinha(int indice);
 
+	/**
+	 * Insere novos cadastros na database local, utilizando um parâmetro
+	 * <code>String</code> que já deve ser formatado em separação por ";", de
+	 * modo a poder ser inserido no arquivo <code>.csv</code> desejado.
+	 * 
+	 * @param cadastro
+	 * @throws IOException
+	 */
 	public void escreveCadastros(String cadastro) throws IOException {
 		String linha = lerLinha();
 		while (linha != null) {

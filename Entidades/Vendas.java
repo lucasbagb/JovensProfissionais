@@ -59,7 +59,7 @@ public class Vendas {
 	}
 
 	/**
-	 * Setter de data da transação, toma como parâmetro a instância de momento
+	 * <code>Setter</code> de data da transação, toma como parâmetro a instância de momento
 	 * da classe <code>Calendar</code> e a armazena num vetor local.
 	 * 
 	 */
@@ -73,7 +73,7 @@ public class Vendas {
 	}
 
 	/**
-	 * Getter da data de transação parametrizada na venda.
+	 * ´<code>Getter</code> da data de transação parametrizada na venda.
 	 * 
 	 * @return data de transação formatada.
 	 */
