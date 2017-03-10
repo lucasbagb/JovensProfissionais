@@ -11,7 +11,7 @@ import DAO.ManipuladorVendedores;
  * parâmetros das classes {@link Gerente Gerente}, {@link Vendedor Vendedor},
  * {@link Cliente Cliente} e {@link Carro Carro}, de modo a registrar a
  * interação entre tais Classes na realização de vendas em múltiplos meios. Esta
- * é uma primariamente uma classe de efetuação de registros de tais parâmetros,
+ * é primariamente uma classe de efetuação de registros de tais parâmetros,
  * feita para <code>databases</code> de arquivos <code>.csv</code>.
  * 
  * @author Lucas Amorim, Julio Silva

@@ -4,6 +4,17 @@ import java.io.IOException;
 
 import DAO.ManipuladorGerentes;
 
+/**
+ * A classe <code>Vendedor</code> é uma classe pública que extende a classe
+ * {@link Funcionario Funcionario} e acessa o <code>databases</code> de arquivos
+ * <code>.csv</code> da classe {@link Gerente Gerente}, através do método
+ * {@link #cruzaDadosGerente(String)}, para criar vínculo. A classe possui
+ * <code>Override</code> dos métodos {@link #toString()} e
+ * {@link #setComissao(double)}.
+ * 
+ * @author Lucas Amorim, Julio Silva
+ *
+ */
 public class Vendedor extends Funcionario {
 
 	private ManipuladorGerentes myManager;
@@ -33,8 +44,7 @@ public class Vendedor extends Funcionario {
 	 * registro de tal.
 	 * 
 	 * @param gerenteNome
-	 * @return <code>true</code> se existir um gerente com o
-	 *         nome inserido.
+	 * @return <code>true</code> se existir um gerente com o nome inserido.
 	 */
 	public boolean cruzaDadosGerente(String gerenteNome) {
 
@@ -66,6 +76,12 @@ public class Vendedor extends Funcionario {
 		return false;
 	}
 
+	/**
+	 * Mostra sequencialmente os parâmetros-padrão de um vendedro, em formato
+	 * adaptado para inserção em arquivos <code>.csv</code>
+	 * 
+	 * @return parâmetros da vendedor, separados por <code>;</code>
+	 */
 	@Override
 	public String toString() {
 		return (this.usuario.username + ";" + this.usuario.password + ";" + this.nome + ";" + this.gerente.nome);
