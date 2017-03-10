@@ -1,14 +1,13 @@
 package Testes;
 
-import JTextField.Cadastros.TelaCadCarros;
+import JTextField.TelaBoasVindas;
 
 public class TestaJulio {
 
 	public static void main(String[] args) {
 
-		TelaCadCarros tcc = new TelaCadCarros();
-
-		tcc.JTPCarros();
+		TelaBoasVindas tbv = new TelaBoasVindas();
+		tbv.JTPBoasVindas();
 
 	}
 

@@ -65,20 +65,30 @@ public class TelaLogin {
 	public int percorreLogins(JTextField user, JTextField password) {
 
 		try {
-			String usuario = user.getText();
+			String usuario = user.getText().trim();
 			int senha = Integer.parseInt(password.getText());
 
 			// Percorre clientes
 			ManipuladorClientes ma = new ManipuladorClientes();
-			ma.disponibilizaCadastros();
+			// ma.disponibilizaCadastros();
 
-			for (int i = 0; i < ma.campo.length; i++) {
+			for (int i = 0; i < ma.clientes.length; i++) {
 				// o programa não acessa \/
-				if (usuario == ma.campo[i][0]) {
-					if (senha == Integer.parseInt(ma.campo[i][1])) {
-						userData = ma.campo[i].toString();
+				if (usuario.equals(ma.clientes[i][0].trim())) {
+					if (senha == Integer.parseInt(ma.clientes[i][1])) {
+
+						StringBuilder linha = new StringBuilder();
+
+						for (int j = 0; j < ma.clientes[0].length; j++) {
+							linha.append(ma.clientes[i][j]);
+							if (j != (ma.clientes[0].length - 1)) {
+								linha.append(";");
+							}
+						}
+
+						userData = linha.toString();
 						return 1;
-					} else {
+					} else if (i == ma.clientes.length - 1) {
 						return 4;
 					}
 				}
@@ -87,12 +97,21 @@ public class TelaLogin {
 
 			// Percorre gerentes
 			ManipuladorGerentes mg = new ManipuladorGerentes();
-			mg.disponibilizaCadastros();
+			// mg.disponibilizaCadastros();
 
-			for (int j = 0; j < ma.campo.length; j++) {
-				if (usuario == ma.campo[j][0]) {
+			for (int j = 0; j < mg.gerentes.length; j++) {
+				if (usuario.equals(mg.gerentes[j][0].trim())) {
 					if (senha == Integer.parseInt(ma.campo[j][1])) {
-						userData = mg.campo[j].toString();
+						StringBuilder linha = new StringBuilder();
+
+						for (int k = 0; k < ma.clientes[0].length; k++) {
+							linha.append(ma.clientes[j][k]);
+							if (k != (ma.clientes[0].length - 1)) {
+								linha.append(";");
+							}
+						}
+
+						userData = linha.toString();
 						return 2;
 					} else {
 						return 4;
@@ -103,12 +122,21 @@ public class TelaLogin {
 
 			// Percorre vendedores
 			ManipuladorVendedores mv = new ManipuladorVendedores();
-			mv.disponibilizaCadastros();
+			// mv.disponibilizaCadastros();
 
-			for (int k = 0; k < ma.campo.length; k++) {
-				if (usuario == ma.campo[k][0]) {
+			for (int k = 0; k < mv.vendedores.length; k++) {
+				if (usuario.equals(mv.vendedores[k][0].trim())) {
 					if (senha == Integer.parseInt(ma.campo[k][1])) {
-						userData = mv.campo[k].toString();
+						StringBuilder linha = new StringBuilder();
+
+						for (int l = 0; l < ma.clientes[0].length; l++) {
+							linha.append(ma.clientes[k][l]);
+							if (l != (ma.clientes[0].length - 1)) {
+								linha.append(";");
+							}
+						}
+
+						userData = linha.toString();
 						return 3;
 					} else {
 						return 4;
