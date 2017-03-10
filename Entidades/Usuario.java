@@ -1,6 +1,16 @@
 package Entidades;
 
-public class Usuario implements Interfaces.Autentica_login {
+/**
+ * A classe <code>Usuario</code> é uma classe pública designada apenas a
+ * manipulação de dados, portanto sendo constituída apenas de atributos e
+ * <code>Getters/Setters</code>. Devido a esta configuração, sua presença em
+ * instanciações deste Aplicativo usualmente se restringe a settar um Objeto
+ * <code>Usuario</code> como variável de outra Classe.
+ * 
+ * @author Lucas Amorim, Julio Silva
+ *
+ */
+public class Usuario {
 
 	// variáveis
 	// ------------------------------------------------------------------
@@ -25,24 +35,6 @@ public class Usuario implements Interfaces.Autentica_login {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	// métodos
-	// ------------------------------------------------------------------
-
-	@Override
-	public boolean autenticaLogin(Usuario usuario) {
-		if (this.username == usuario.username) {
-			if (this.password == usuario.password) {
-				return true;
-			} else {
-				System.out.println("Senha incorreta.");
-				return false;
-			}
-		} else {
-			System.out.println("Usuário incorreto.");
-			return false;
-		}
 	}
 
 }

@@ -1,69 +1,108 @@
 package Validadores;
 
-
 import java.util.InputMismatchException;
 
+/**
+ * A Classe <code>ValidarCPF</code> é uma classe pública de autenticação de
+ * parâmetros pessoais <em>CPF</em>, usualmente originados em Objetos de tipo
+ * {@link Entidades.Cliente Cliente}. A classe possui um único método de
+ * validação (<em>booleano</em>), o {@link #isCpf(String) isCpf}.
+ * 
+ * @author Julio Silva, Lucas Amorim
+ *
+ */
 public class ValidarCPF {
-	
-	public static boolean iscpf(String cpf) {
-		// considera-se erro cpf's formados por uma sequencia de numeros iguais
-		if (cpf.equals("00000000000") || cpf.equals("11111111111") ||
-				cpf.equals("22222222222") || cpf.equals("33333333333") ||
-		        cpf.equals("44444444444") || cpf.equals("55555555555") ||
-		        cpf.equals("66666666666") || cpf.equals("77777777777") ||
-		        cpf.equals("88888888888") || cpf.equals("99999999999") ||
-		       (cpf.length() != 11))
-		       return(false);
 
-		    char dig10, dig11;
-		    int sm, i, r, num, peso;
+	/**
+	 * Efetua validação real do CPF, desde checar inserção de formato de número
+	 * único ("<em>111...</em>") até checagem de peso e conversão,
+	 * <code>char</code> por <code>char</code>, da <code>String cpf</code>
+	 * inserida.
+	 * 
+	 * @param cpf
+	 * @return <b>boolean</b> que indicará o sucerro (<b>true</b>) ou falha
+	 *         (<b>false</b>) na validação.
+	 */
+	public static boolean isCpf(String cpf) {
+		/*
+		 * Considera se houve inserção de sequências de números iguais, ou se a
+		 * String inserida possui um tamanho diferente do permitido.
+		 */
+		if (cpf.equals("00000000000") || cpf.equals("11111111111") || cpf.equals("22222222222")
+				|| cpf.equals("33333333333") || cpf.equals("44444444444") || cpf.equals("55555555555")
+				|| cpf.equals("66666666666") || cpf.equals("77777777777") || cpf.equals("88888888888")
+				|| cpf.equals("99999999999") || (cpf.length() != 11)) {
+			return (false);
+		}
 
-		// "try" - protege o codigo para eventuais erros de conversao de tipo (int)
-		    try {
-		// Calculo do 1o. Digito Verificador
-		      sm = 0;
-		      peso = 10;
-		      for (i=0; i<9; i++) {              
-		// converte o i-esimo caractere do cpf em um numero:
-		// por exemplo, transforma o caractere '0' no inteiro 0         
-		// (48 eh a posicao de '0' na tabela ASCII)         
-		        num = (int)(cpf.charAt(i) - 48); 
-		        sm = sm + (num * peso);
-		        peso = peso - 1;
-		      }
+		char digito10, ultimoDigito;
+		int soma, i, r, formatoNumerico, peso;
 
-		      r = 11 - (sm % 11);
-		      if ((r == 10) || (r == 11))
-		         dig10 = '0';
-		      else dig10 = (char)(r + 48); // converte no respectivo caractere numerico
+		/*
+		 * Bloco "try" - protege o código para eventuais erros de conversão para
+		 * o tipo primitivo int.
+		 */
+		try {
+			// Cálculo do 1ª Dígito Verificador
+			soma = 0;
+			peso = 10;
+			for (i = 0; i < 9; i++) {
+				/*
+				 * Converte o i-ésimo caractere do CPF em um número: por
+				 * exemplo, transforma o caractere '0', no inteiro 0 (48 é a
+				 * posição de '0' na tabela ASCII)
+				 */
+				formatoNumerico = (int) (cpf.charAt(i) - 48);
+				soma = soma + (formatoNumerico * peso);
+				peso = peso - 1;
+			}
 
-		// Calculo do 2o. Digito Verificador
-		      sm = 0;
-		      peso = 11;
-		      for(i=0; i<10; i++) {
-		        num = (int)(cpf.charAt(i) - 48);
-		        sm = sm + (num * peso);
-		        peso = peso - 1;
-		      }
+			r = 11 - (soma % 11);
+			if ((r == 10) || (r == 11)) {
+				digito10 = '0';
+			} else {
+				// Converte no respectivo caractere numérico
+				digito10 = (char) (r + 48);
+			}
 
-		      r = 11 - (sm % 11);
-		      if ((r == 10) || (r == 11))
-		         dig11 = '0';
-		      else dig11 = (char)(r + 48);
+			// Cálculo do 2ª Dígito Verificador
+			soma = 0;
+			peso = 11;
+			for (i = 0; i < 10; i++) {
+				formatoNumerico = (int) (cpf.charAt(i) - 48);
+				soma = soma + (formatoNumerico * peso);
+				peso = peso - 1;
+			}
 
-		// Verifica se os digitos calculados conferem com os digitos informados.
-		      if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10)))
-		         return(true);
-		      else return(false);
-		    } catch (InputMismatchException erro) {
-		        return(false);
-		    }
-		  }
+			r = 11 - (soma % 11);
+			if ((r == 10) || (r == 11))
+				ultimoDigito = '0';
+			else
+				ultimoDigito = (char) (r + 48);
 
-		  public static String imprimecpf(String cpf) {
-		    return(cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." +
-		      cpf.substring(6, 9) + "-" + cpf.substring(9, 11));
-		  }
-		
+			/*
+			 * Verifica se os dígitos calculados conferem com os digitos
+			 * inseridos como parâmetro do método.
+			 */
+			if ((digito10 == cpf.charAt(9)) && (ultimoDigito == cpf.charAt(10))) {
+				return (true);
+			} else {
+				return (false);
+			}
+		} catch (InputMismatchException erro) {
+			return (false);
+		}
+	}
+
+	/**
+	 * Imprime o CPF, em formato <b>XXX.XXX.XXX-XX</b>.
+	 * 
+	 * @param cpf
+	 * @return <b>String</b> que representa o CPF formatado
+	 */
+	public static String imprimecpf(String cpf) {
+		return (cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
+				+ cpf.substring(9, 11));
+	}
 
 }

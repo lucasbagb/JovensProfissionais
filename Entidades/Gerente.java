@@ -2,18 +2,26 @@ package Entidades;
 
 /**
  * A classe <code>Gerente</code> é uma classe pública que extende a classe
- * {@link Funcionario Funcionario}.
+ * {@link Funcionario Funcionario}. <br />
+ * A partir do momento em que exista ao menos um Objeto da classe
+ * {@link Vendedor Vendedor} numa instância deste Aplicativo, por modelo de
+ * utlização do mesmo, é acordado que deve existir um Objeto da Classe
+ * <code>Gerente</code> associado ao <code>Vendedor</code>.<br />
+ * <br />
+ * Um Objeto desta Classe, também de acordo com o modelo deste Aplicativo, pode
+ * estar associado a 0, 1 ou mais Objetos da Classe <code>Vendedor</code>.
  * 
  * @author Lucas Amorim, Julio Silva
- *
+ * @see Usuario
+ * 
  */
 public class Gerente extends Funcionario {
 
 	public Gerente(String nome, String user, int password) {
 		super(nome, user, password);
 	}
-	
-	public Gerente(String nome){
+
+	public Gerente(String nome) {
 		super(nome);
 	}
 
