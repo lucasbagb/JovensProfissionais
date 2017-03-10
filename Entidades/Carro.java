@@ -2,7 +2,8 @@ package Entidades;
 
 /**
  * A classe <code>Carro</code> é uma classe pública e possui
- * <code>Override</code> do método {@link #toString()}.
+ * <code>Override</code> do método {@link #toString()}, para transcrição de seus
+ * dados em <code>database</code> local de arquivos <code>.csv</code>.
  * 
  * @author Lucas Amorim, Julio Silva
  *
@@ -16,6 +17,11 @@ public class Carro {
 		this.preco = preco;
 	}
 
+	/**
+	 * Variável financeira de estabelecimento de margem de lucro da empresa na
+	 * venda de carros pelo aplicativo.
+	 * 
+	 */
 	private final double margemLucro = 1.28;
 	private String marca;
 	private String modelo;

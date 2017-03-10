@@ -13,6 +13,7 @@ import DAO.ManipuladorGerentes;
  * {@link #setComissao(double)}.
  * 
  * @author Lucas Amorim, Julio Silva
+ * @see Usuario
  *
  */
 public class Vendedor extends Funcionario {

@@ -2,7 +2,13 @@ package Entidades;
 
 /**
  * A classe <code>Funcionario</code> é uma classe pública e abstrata. A classe
- * possui <code>Override</code> do método {@link #toString()}.
+ * possui <code>Override</code> do método {@link #toString()}, para transcrição
+ * de seus dados em <code>database</code> local de arquivos
+ * <code>.csv</code>.<br />
+ * <br />
+ * Esta classe é estabelece uma base de atributos e métodos padronizados para
+ * classes como a Classe {@link Gerente Gerente} e a Classe {@link Vendedor
+ * Vendedor}.
  * 
  * @author Lucas Amorim, Julio Silva
  *
@@ -14,6 +20,7 @@ public abstract class Funcionario { // vendedores e gerentes
 
 	public Funcionario(String nome, String user, int password) {
 		this.nome = nome;
+		this.usuario = new Usuario();
 		this.usuario.username = user;
 		this.usuario.password = password;
 	}
@@ -50,6 +57,10 @@ public abstract class Funcionario { // vendedores e gerentes
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public void setUsername(String username) {
+		this.usuario.username = username;
 	}
 
 	@Override
