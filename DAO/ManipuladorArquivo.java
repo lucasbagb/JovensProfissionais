@@ -39,6 +39,14 @@ public abstract class ManipuladorArquivo {
 		}
 	}
 
+	public ManipuladorArquivo(String caminhoArquivo) {
+		try {
+			abreArquivo(caminhoArquivo);
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+
 	/**
 	 * Lê uma linha da origem ligada ao <code>BufferedReader</code> da classe.
 	 * 

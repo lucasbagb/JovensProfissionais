@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import DAO.ManipuladorGerentes;
 import DAO.ManipuladorVendedores;
+import Validadores.ValidarCPF;
 
 /**
  * A classe <code>Vendas</code> é uma classe pública que coordena diversos
@@ -95,9 +96,31 @@ public class Vendas {
 	 * @return parâmetros da venda, separados por <code>;</code>
 	 */
 	public String toStringVendas() {
-		return (this.getDataArquivo() + "\nDados do carro:\n" + this.carro.getMarca() + "\t" + this.carro.getModelo() + "\t" + this.carro.getPlaca() + "\nDados do cliente:\n"
-				+ this.cliente.getNome() + "\t" + this.cliente.getCpf() + "\t" + this.getData() + "\nQuantidade de parcelas:"
-				+ this.getQuantidadeParcelas());
+		
+		return 	(	"_________________________________________________________________________________\n \n"
+				+ 	"---------------------------> INDRA CAR SHOP APP v2.0 <---------------------------\n"
+				+ 	"_________________________________________________________________________________\n \n"
+				+ 	" < " + this.getData() + " >\n \n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
+				+	" Cliente: " + this.cliente.getNome() + "\n \n"
+				+	" Contato: " + this.cliente.getTelefone() + "\n \n"
+				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\n \n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
+				+	" Carro: < " + this.carro.getMarca() + this.carro.getModelo() + " >\n \n"
+				+	" Placa: < " + this.carro.getPlaca() + " >\n \n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
+				+	" Valor da NF: < R$" + this.carro.getPreco() + "\n \n"
+				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\n \n"
+				+	"_________________________________________________________________________________\n \n \n"
+				+	"..............Assinatura do gerente responsável:.....x_____________..............\n \n \n"
+				+	"..............Assinatura do cliente:.................x_____________..............\n \n"
+				+	"_________________________________________________________________________________");
+		
+		
+		
+//		return (this.getDataArquivo() + "\nDados do carro:\n" + this.carro.getMarca() + "\t" + this.carro.getModelo() + "\t" + this.carro.getPlaca() + "\nDados do cliente:\n"
+//				+ this.cliente.getNome() + "\t" + this.cliente.getCpf() + "\t" + this.getData() + "\nQuantidade de parcelas:"
+//				+ this.getQuantidadeParcelas());
 	}
 
 	/**
