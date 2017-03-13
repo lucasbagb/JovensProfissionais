@@ -1,12 +1,13 @@
 package Testes;
 
+import JTextField.TelaBoasVindas;
+
 public class TestaJulio {
 
 	public static void main(String[] args) {
 
-//		TelaBoasVindas tbv = new TelaBoasVindas();
-//		
-//		tbv.JTPBoasVindas();
+		TelaBoasVindas tbv = new TelaBoasVindas();
+		tbv.JTPBoasVindas();
 		
 //		TelaCadFuncionarios tf = new TelaCadFuncionarios();
 //		tf.JTPFuncionarios();
