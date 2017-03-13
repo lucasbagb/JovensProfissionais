@@ -1,16 +1,17 @@
 package Testes;
 
-import JTextField.TelaGerentes;
+import JTextField.Cadastros.TelaCadCarros;
 
 public class TestaLucas {
 
 	public static void main(String[] args) {
 
-		TelaGerentes tg = new TelaGerentes();
+		TelaCadCarros tcc = new TelaCadCarros();
 
-		String campo = "jcesar; 123; Julio";
+		//String campo = "jcesar; 123; Julio";
 		
-		tg.JTPGerentes(campo);
+		//tg.JTPGerentes(campo);
 		
+		tcc.JTPCarros();
 	}
 }
