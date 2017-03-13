@@ -7,6 +7,7 @@ import DAO.ManipuladorCarros;
 
 public class TelaCompras {
 
+	@SuppressWarnings("unused")
 	public void JTPCompras(String campo) {
 
 		String[] cliente = campo.split(";");
