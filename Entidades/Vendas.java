@@ -80,6 +80,10 @@ public class Vendas {
 	public String getData() {
 		return "Data da transação: " + data[0] + "/" + data[1] + "/" + data[2] + " - " + data[3] + ":" + data[4] + ".";
 	}
+	
+	public String getDataArquivo(){
+		return data[2] + "." + data[1] + "." + data[0] + " - " + data[3] + "h" + data[4];
+	}
 
 	// métodos
 	// ------------------------------------------------------------------
@@ -91,8 +95,8 @@ public class Vendas {
 	 * @return parâmetros da venda, separados por <code>;</code>
 	 */
 	public String toStringVendas() {
-		return (this.carro.getMarca() + ";" + this.carro.getModelo() + ";" + this.carro.getPlaca() + ";"
-				+ this.cliente.getNome() + ";" + this.cliente.getCpf() + ";" + this.getData() + ";"
+		return (this.getDataArquivo() + "\nDados do carro:\n" + this.carro.getMarca() + "\t" + this.carro.getModelo() + "\t" + this.carro.getPlaca() + "\nDados do cliente:\n"
+				+ this.cliente.getNome() + "\t" + this.cliente.getCpf() + "\t" + this.getData() + "\nQuantidade de parcelas:"
 				+ this.getQuantidadeParcelas());
 	}
 
