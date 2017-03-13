@@ -1,7 +1,5 @@
 package Testes;
 
-import JTextField.Cadastros.TelaCadFuncionarios;
-
 public class TestaJulio {
 
 	public static void main(String[] args) {
@@ -10,8 +8,8 @@ public class TestaJulio {
 //		
 //		tbv.JTPBoasVindas();
 		
-		TelaCadFuncionarios tf = new TelaCadFuncionarios();
-		tf.JTPFuncionarios();
+//		TelaCadFuncionarios tf = new TelaCadFuncionarios();
+//		tf.JTPFuncionarios();
 
 	}
 
