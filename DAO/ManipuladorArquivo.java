@@ -79,7 +79,7 @@ public abstract class ManipuladorArquivo {
 
 		escritorArquivo = new PrintWriter(new FileWriter(arquivo, true));
 		lerArquivo = new BufferedReader(new FileReader(arquivo));
-		lerArquivo.mark(4000);
+		lerArquivo.mark(8000);
 		disponibilizaCadastros();
 	}
 
