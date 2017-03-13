@@ -68,9 +68,9 @@ public class TelaCadVendedores {
 
 	private String JOPVendedores(String[][] gerentes) {
 
-		String[] gerentesNomes = new String[gerentes.length];
+		String[] gerentesNomes = new String[gerentes.length - 1];
 
-		for (int i = 0; i < (gerentes.length); i++) {
+		for (int i = 0; i < (gerentes.length - 1); i++) {
 
 			gerentesNomes[i] = (i) + " · " + gerentes[i][2];
 
