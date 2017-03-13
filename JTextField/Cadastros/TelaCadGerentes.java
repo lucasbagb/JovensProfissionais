@@ -39,8 +39,8 @@ public class TelaCadGerentes {
 				 * password1)) { vc.ValidadorSenhas(password, password1); } else
 				 */
 
-				if (vc.ValidadorSenhas(password, password1)
-						&& (vc.ValidadorCamposFuncionarios(nome, user, password, password1))) {
+				if ((vc.ValidadorCamposFuncionarios(nome, user, password, password1))
+						&& vc.ValidadorSenhas(password, password1)) {
 
 					Gerente gerente = new Gerente(nome.getText(), user.getText(), Integer.parseInt(password.getText()));
 					ManipuladorGerentes mg = new ManipuladorGerentes();

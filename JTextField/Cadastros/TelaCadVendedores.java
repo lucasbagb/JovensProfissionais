@@ -40,8 +40,8 @@ public class TelaCadVendedores {
 				 * password1)) { vc.ValidadorSenhas(password, password1); } else
 				 */
 
-				if (vc.ValidadorSenhas(password, password1)
-						&& (vc.ValidadorCamposFuncionarios(nome, user, password, password1))) {
+				if ((vc.ValidadorCamposFuncionarios(nome, user, password, password1))
+						&& vc.ValidadorSenhas(password, password1)) {
 
 					Vendedor vendedor = new Vendedor(nome.getText(), user.getText(),
 							Integer.parseInt(password.getText()));
