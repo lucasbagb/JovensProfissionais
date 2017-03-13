@@ -11,7 +11,7 @@ import Entidades.Vendedor;
 public class TelaVendas {
 
 	Gerente gerente = new Gerente(null, null, 0);
-	Vendedor vendedor = new Vendedor(null, null, 0);
+	Vendedor vendedor = new Vendedor(null, null, 0, null);
 
 	public TelaVendas(String[] funcionario, int gerVer) {
 		if (gerVer == 1) {
