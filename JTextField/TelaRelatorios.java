@@ -1,9 +1,9 @@
 package JTextField;
 
 public class TelaRelatorios {
-
-	public void JTPRelatorios() {
+	
+	public void JTPRelatorios(){
 		
 	}
-	
+
 }
