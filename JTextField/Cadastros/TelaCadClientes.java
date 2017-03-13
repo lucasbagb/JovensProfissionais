@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import DAO.ManipuladorClientes;
 import Entidades.Cliente;
+import JTextField.HintTextField;
 import Validadores.ValidaCadastro;
 
 public class TelaCadClientes {
@@ -16,10 +17,10 @@ public class TelaCadClientes {
 		int repetidor = 0;
 		do {
 
-			JTextField cpf = new JTextField();
-			JTextField nome = new JTextField();
-			JTextField telefone = new JTextField();
-			JTextField user = new JTextField();
+			JTextField cpf = new HintTextField("XXX.XXX.XXX-XX");
+			JTextField nome = new HintTextField("Paulo Sergio Gonçalves de Oliveira");
+			JTextField telefone = new HintTextField("11 0000-0000");
+			JTextField user = new HintTextField("psgoncalves");
 			JTextField password = new JPasswordField(6);
 			JTextField password1 = new JPasswordField(6);
 
