@@ -103,19 +103,19 @@ public class TelaLogin {
 			for (int j = 0; j < mg.gerentes.length; j++) {
 				if (mg.gerentes[j][0] != null) {
 					if (usuario.equals(mg.gerentes[j][0])) {
-						if (senha == Integer.parseInt(ma.campo[j][1])) {
+						if (senha == Integer.parseInt(mg.gerentes[j][1])) {
 							StringBuilder linha = new StringBuilder();
 
-							for (int k = 0; k < ma.clientes[0].length; k++) {
-								linha.append(ma.clientes[j][k]);
-								if (k != (ma.clientes[0].length - 1)) {
+							for (int k = 0; k < mg.gerentes[0].length; k++) {
+								linha.append(mg.gerentes[j][k]);
+								if (k != (mg.gerentes[0].length - 1)) {
 									linha.append(";");
 								}
 							}
 
 							userData = linha.toString();
 							return 2;
-						} else {
+						} else if (j == mg.gerentes.length - 1){
 							continue;
 						}
 					}
@@ -133,16 +133,16 @@ public class TelaLogin {
 						if (senha == Integer.parseInt(ma.campo[k][1])) {
 							StringBuilder linha = new StringBuilder();
 
-							for (int l = 0; l < ma.clientes[0].length; l++) {
-								linha.append(ma.clientes[k][l]);
-								if (l != (ma.clientes[0].length - 1)) {
+							for (int l = 0; l < mv.vendedores[0].length; l++) {
+								linha.append(mv.vendedores[k][l]);
+								if (l != (mv.vendedores[0].length - 1)) {
 									linha.append(";");
 								}
 							}
 
 							userData = linha.toString();
 							return 3;
-						} else {
+						} else if (k == mv.vendedores.length - 1){
 							return 4;
 						}
 					}
