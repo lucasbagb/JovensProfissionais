@@ -25,35 +25,42 @@ public class TelaCadGerentes {
 			Object[] message = { "Digite seu nome: ", nome, "Digite o usuário: ", user, "Digite a senha:", password,
 					"Confirme a senha:", password1 };
 
-			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de novo usuário",
+			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de gerente - IndraCarShopApp",
 					JOptionPane.OK_CANCEL_OPTION);
 
 			if (option == JOptionPane.OK_OPTION) {
 
 				ValidaCadastro vc = new ValidaCadastro();
 
-				/*
-				 * if (vc.ValidadorCamposFuncionarios(nome, user, password,
-				 * password1)) { vc.ValidadorCamposFuncionarios(nome, user,
-				 * password, password1); } else if (vc.ValidadorSenhas(password,
-				 * password1)) { vc.ValidadorSenhas(password, password1); } else
-				 */
+				try {
+					Integer password2 = Integer.parseInt(password.getText());
+					Integer password3 = Integer.parseInt(password1.getText());
 
-				if ((vc.ValidadorCamposFuncionarios(nome, user, password, password1))
-						&& vc.ValidadorSenhas(password, password1)) {
+					if (nome.getText().isEmpty() || user.getText().isEmpty() || password.getText().isEmpty()
+							|| password1.getText().isEmpty()) {
+						vc.ValidadorCamposFuncionarios(nome, user, password, password1);
 
-					Gerente gerente = new Gerente(nome.getText(), user.getText(), Integer.parseInt(password.getText()));
-					ManipuladorGerentes mg = new ManipuladorGerentes();
-					try {
-						mg.escreveCadastros(gerente.toString());
-						mg.fechaManipulador();
-					} catch (IOException ioe) {
-						System.out.println(ioe.getStackTrace());
+					} else if (password2 != password3) {
+						vc.ValidadorSenhas(password, password1);
+
+					} else {
+
+						Gerente gerente = new Gerente(nome.getText(), user.getText(),
+								Integer.parseInt(password.getText()));
+						ManipuladorGerentes mg = new ManipuladorGerentes();
+						try {
+							mg.escreveCadastros(gerente.toString());
+							mg.fechaManipulador();
+						} catch (IOException ioe) {
+							System.out.println(ioe.getStackTrace());
+						}
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.",
+								"Cadastro de gerente - IndraCarShopApp", JOptionPane.INFORMATION_MESSAGE);
 					}
-					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Cadastro de novo gerente",
-							JOptionPane.INFORMATION_MESSAGE);
+				} catch (java.lang.NumberFormatException x) {
+					JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!",
+							"Cadastro de gerente - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
 				}
-
 			} else {
 				repeticao = 1;
 

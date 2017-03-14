@@ -35,30 +35,43 @@ public class TelaCadVendedores {
 			Object[] message = { "Digite seu nome: ", nome, "Digite o usuário: ", user, "Digite a senha:", password,
 					"Confirme a senha:", password1 };
 
-			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de novo vendedor",
+			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de vendedor - IndraCarShopApp",
 					JOptionPane.OK_CANCEL_OPTION);
 
 			if (option == JOptionPane.OK_OPTION) {
 
 				ValidaCadastro vc = new ValidaCadastro();
 
-				if ((vc.ValidadorCamposFuncionarios(nome, user, password, password1))
-						&& vc.ValidadorSenhas(password, password1)) {
+				try {
+					Integer password2 = Integer.parseInt(password.getText());
+					Integer password3 = Integer.parseInt(password1.getText());
 
-					Vendedor vendedor = new Vendedor(nome.getText(), user.getText(),
-							Integer.parseInt(password.getText()), gerente);
+					if (nome.getText().isEmpty() || user.getText().isEmpty() || password.getText().isEmpty()
+							|| password1.getText().isEmpty()) {
+						vc.ValidadorCamposFuncionarios(nome, user, password, password1);
 
-					ManipuladorVendedores mv = new ManipuladorVendedores();
-					try {
-						mv.escreveCadastros(vendedor.toString());
-						mv.fechaManipulador();
-					} catch (IOException ioe) {
-						System.out.println(ioe.getStackTrace());
+					} else if (password2 != password3) {
+						vc.ValidadorSenhas(password, password1);
+
+					} else {
+
+						Vendedor vendedor = new Vendedor(nome.getText(), user.getText(),
+								Integer.parseInt(password.getText()), gerente);
+
+						ManipuladorVendedores mv = new ManipuladorVendedores();
+						try {
+							mv.escreveCadastros(vendedor.toString());
+							mv.fechaManipulador();
+						} catch (IOException ioe) {
+							System.out.println(ioe.getStackTrace());
+						}
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.",
+								"Cadastro de vendedor - IndraCarShopApp", JOptionPane.INFORMATION_MESSAGE);
 					}
-					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Cadastro de novo vendedor",
-							JOptionPane.INFORMATION_MESSAGE);
+				} catch (java.lang.NumberFormatException x) {
+					JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!",
+							"Cadastro de vendedor - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
 				}
-
 			} else {
 				repeticao = 1;
 

@@ -12,7 +12,7 @@ public class TelaCadastros {
 		do {
 			Object[] options = { "Carro", "Funcionário", "Voltar" };
 
-			switch (JOptionPane.showOptionDialog(null, "Deseja realizar que tipo de cadastro?", "IndraCarShopApp",
+			switch (JOptionPane.showOptionDialog(null, "Deseja realizar que tipo de cadastro?", "Tela de Cadastros - IndraCarShopApp",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0])) {
 
 			case 0:
