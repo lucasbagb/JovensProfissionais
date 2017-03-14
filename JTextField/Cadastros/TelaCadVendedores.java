@@ -79,6 +79,8 @@ public class TelaCadVendedores {
 					repeticao = 1;
 
 				}
+			} else {
+				repeticao = 1;
 			}
 		} while (repeticao == 0);
 	}
