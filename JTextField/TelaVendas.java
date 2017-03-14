@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import DAO.ManipuladorCarros;
 import DAO.ManipuladorClientes;
@@ -49,8 +50,9 @@ public class TelaVendas {
 
 			if (dadosCliente != null) {
 				// Settando parâmetros do cliente locament
-				this.cliente = new Cliente(dadosCliente[3], dadosCliente[2], dadosCliente[4], dadosCliente[0], Integer.parseInt(dadosCliente[1]));
-				
+				this.cliente = new Cliente(dadosCliente[3], dadosCliente[2], dadosCliente[4], dadosCliente[0],
+						Integer.parseInt(dadosCliente[1]));
+
 				Object[] message = { "Estes são os dados do cliente: ", " >> Nome:", dadosCliente[2], " >> CPF:",
 						dadosCliente[3], " >> Telefone:", dadosCliente[4], " >> Usuário:", dadosCliente[0],
 						"Os dados estão corretos?" };
@@ -84,7 +86,8 @@ public class TelaVendas {
 
 				if (dadosCarro != null) {
 					// Settando parâmetros de carro localmente
-					this.carro = new Carro(dadosCarro[0], dadosCarro[1], dadosCarro[2], Double.parseDouble(dadosCarro[3]));
+					this.carro = new Carro(dadosCarro[0], dadosCarro[1], dadosCarro[2],
+							Double.parseDouble(dadosCarro[3]));
 
 					Object[] message = { "Estes são os dados do veículo escolhido: ", " >> Marca:", dadosCarro[0],
 							" >> Modelo:", dadosCarro[1], " >>>> Apenas por: (R$)", dadosCarro[3],
@@ -94,19 +97,39 @@ public class TelaVendas {
 							JOptionPane.OK_CANCEL_OPTION);
 
 					if (option == JOptionPane.OK_OPTION) {
+						int repetidor3 = 0;
+						do {
 
-						// OPERAÇÃO DE VENDA
-						Vendas venda = new Vendas(this.carro, this.cliente, 60);
-						mv = new ManipuladorVendas(venda);
-						mv.escreveVenda(venda);
-						try {
-							mv.lerVenda();
-							mv.fechaManipulador();
-						} catch (IOException ioe) {
-							ioe.printStackTrace();
-						}
-						
-						repetidor = 1;
+							JTextField parcelas = new JTextField();
+							Object[] message2 = { "Em quantas parcelas será feito o pagamento?", parcelas };
+
+							int option2 = JOptionPane.showConfirmDialog(null, message2,
+									"Tela de Vendas - IndraCarShopApp", JOptionPane.OK_CANCEL_OPTION);
+
+							if (option2 == JOptionPane.OK_OPTION) {
+
+								try {
+									// OPERAÇÃO DE VENDA
+									Vendas venda = new Vendas(this.carro, this.cliente,
+											Integer.parseInt(parcelas.getText()));
+									mv = new ManipuladorVendas(venda);
+									mv.escreveVenda(venda);
+									try {
+										mv.lerVenda();
+										mv.fechaManipulador();
+									} catch (IOException ioe) {
+										ioe.printStackTrace();
+									}
+									repetidor3 = 1;
+									repetidor = 1;
+								} catch (java.lang.NumberFormatException x) {
+									JOptionPane.showMessageDialog(null, "Quantidade de parcelas inválida!",
+											"Tela de Vendas - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
+								}
+							} else {
+								repetidor3 = 1;
+							}
+						} while (repetidor3 == 0);
 					}
 
 				} else {
