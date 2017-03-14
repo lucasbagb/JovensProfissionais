@@ -76,7 +76,7 @@ public class Vendas {
 		data[0] = dataTransacao.get(Calendar.DAY_OF_MONTH);
 		data[1] = (dataTransacao.get(Calendar.MONTH)) + 1;
 		data[2] = dataTransacao.get(Calendar.YEAR);
-		data[3] = dataTransacao.get(Calendar.HOUR);
+		data[3] = dataTransacao.get(Calendar.HOUR_OF_DAY);
 		data[4] = dataTransacao.get(Calendar.MINUTE);
 	}
 
@@ -114,29 +114,28 @@ public class Vendas {
 	 */
 	public String toStringVendas() {
 		
-		this.setData();
 		String preco = String.format("%.2f", (this.carro.getPreco()));
 		String parcela = String.format("%.2f", (this.carro.getPreco() / this.quantidadeParcelas));
 		
-		return 	(	"_________________________________________________________________________________\r\n \r\n"
+		return 	(	"_____________________________________________________________________________\r\n\r\n"
 				+ 	"---------------------------> INDRA CAR SHOP APP v2.0 <---------------------------\r\n"
-				+ 	"_________________________________________________________________________________\r\n \r\n"
-				+ 	" < " + this.getData().replace(".", "") + " >\r\n \r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
-				+	" Cliente: " + this.cliente.getNome() + "\r\n \r\n"
-				+	" Contato: " + this.cliente.getTelefone() + "\r\n \r\n"
-				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\r\n \r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
-				+	" Carro: < " + this.carro.getMarca() + " - " + this.carro.getModelo() + " >\r\n \r\n"
-				+	" Placa: < " + this.carro.getPlaca() + " >\r\n \r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
-				+	" Valor da NF: < R$" + preco + " >\r\n \r\n"
-				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\r\n \r\n"
-				+	" Valor das parcelas: < R$" + parcela + " >\r\n \r\n"
-				+	"_________________________________________________________________________________\r\n \r\n \r\n"
-				+	"..............Assinatura do gerente responsável:.....x_____________..............\r\n \r\n \r\n"
-				+	"..............Assinatura do cliente:.................x_____________..............\r\n \r\n"
-				+	"_________________________________________________________________________________\r\n"
+				+ 	"_____________________________________________________________________________\r\n"
+				+ 	" < " + this.getData().replace(".", "") + " >\r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
+				+	" Cliente: " + this.cliente.getNome() + "\r\n"
+				+	" Contato: " + this.cliente.getTelefone() + "\r\n"
+				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
+				+	" Carro: < " + this.carro.getMarca() + " - " + this.carro.getModelo() + " >\r\n"
+				+	" Placa: < " + this.carro.getPlaca() + " >\r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
+				+	" Valor da NF: < R$" + preco + " >\r\n"
+				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\r\n"
+				+	" Valor das parcelas: < R$" + parcela + " >\r\n"
+				+	"_____________________________________________________________________________\r\n \r\n"
+				+	"  Assinatura do gerente responsável:.....x_______________\r\n \r\n"
+				+	"  Assinatura do cliente:.............................x_______________\r\n"
+				+	"_____________________________________________________________________________\r\n"
 				+ 	" Tower III - Guido Caloi Avenue, nº 1002 - Jd. São Luís, São Paulo/SP, 05802-140");
 		
 		

@@ -14,6 +14,11 @@ public class TelaRelatoriosVendas {
 		// implementação do acesso ao banco
 		ManipuladorVendas mv = new ManipuladorVendas();
 		String[] listaVendas = mv.arquivosVendas;
+		try {
+			mv.fechaManipulador();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
 
 		int repetidor = 1;
 		do {
@@ -45,6 +50,10 @@ public class TelaRelatoriosVendas {
 	private String JOPRelatoriosVendas(String[] vendas) {
 
 		String[] vendasAnoMesDiaHoraMinuto = new String[vendas.length - 1];
+
+		for (int i = 0; i < vendas.length - 1; i++) {
+			vendasAnoMesDiaHoraMinuto[i] = vendas[i];
+		}
 
 		JFrame frame = new JFrame("Input Dialog With Multiple Options");
 		String vendaEscolhida = (String) JOptionPane.showInputDialog(frame, "Qual venda gostaria de visualizar?",
