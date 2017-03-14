@@ -22,10 +22,10 @@ public class TelaCompras {
 
 		// cliente[] = username, password, cpf, nome, telefone
 		String[] cliente = campo.split(";");
-		// Settando par‚metros do cliente locamente
+		// Settando par√¢metros do cliente localmente
 		this.cliente = new Cliente(cliente[3], cliente[2], cliente[4], cliente[0], Integer.parseInt(cliente[1]));
 
-		// implementaÁ„o do acesso ao banco
+		// implementa√ß√£o do acesso ao banco
 		ManipuladorCarros mc = new ManipuladorCarros();
 		String[][] listaCarros = mc.carros;
 
@@ -36,12 +36,12 @@ public class TelaCompras {
 			String dadosCarro[] = tc.JOPCompras(listaCarros);
 
 			if (dadosCarro != null) {
-				// Settando par‚metros de carro localmente
+				// Settando par√¢metros de carro localmente
 				this.carro = new Carro(dadosCarro[0], dadosCarro[1], dadosCarro[2], Double.parseDouble(dadosCarro[3]));
 
-				Object[] message = { "Estes s„o os dados do veÌculo escolhido: ", " >> Marca:", dadosCarro[0],
+				Object[] message = { "Estes s√£o os dados do ve√≠culo escolhido: ", " >> Marca:", dadosCarro[0],
 						" >> Modelo:", dadosCarro[1], " >>>> Apenas por: (R$)", dadosCarro[3],
-						"Deseja prosseguir com a compra deste veÌculo?" };
+						"Deseja prosseguir com a compra deste ve√≠culo?" };
 
 				int option = JOptionPane.showConfirmDialog(null, message, "Tela de Compras - IndraCarShopApp",
 						JOptionPane.OK_CANCEL_OPTION);
@@ -51,7 +51,7 @@ public class TelaCompras {
 					do {
 
 						JTextField parcelas = new JTextField();
-						Object[] message2 = { "Em quantas parcelas ser· feito o pagamento?", parcelas };
+						Object[] message2 = { "Em quantas parcelas ser√° feito o pagamento?", parcelas };
 
 						int option2 = JOptionPane.showConfirmDialog(null, message2, "Tela de Compras - IndraCarShopApp",
 								JOptionPane.OK_CANCEL_OPTION);
@@ -59,7 +59,7 @@ public class TelaCompras {
 						if (option2 == JOptionPane.OK_OPTION) {
 
 							try {
-								// OPERA«√O DE VENDA
+								// OPERA√á√ÉO DE VENDA
 								Vendas venda = new Vendas(this.carro, this.cliente,
 										Integer.parseInt(parcelas.getText()));
 								mv = new ManipuladorVendas(venda);
@@ -73,7 +73,7 @@ public class TelaCompras {
 								repetidor3 = 1;
 								repetidor = 1;
 							} catch (java.lang.NumberFormatException x) {
-								JOptionPane.showMessageDialog(null, "Quantidade de parcelas inv·lida!",
+								JOptionPane.showMessageDialog(null, "Quantidade de parcelas inv√°lida!",
 										"Tela de Compras - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
 							}
 						} else {
@@ -94,7 +94,7 @@ public class TelaCompras {
 
 		for (int i = 0; i < (carros.length - 1); i++) {
 
-			carrosMarcasModelos[i] = (i) + " ∑ " + carros[i][0] + " " + carros[i][1];
+			carrosMarcasModelos[i] = (i) + " ¬∑ " + carros[i][0] + " " + carros[i][1];
 
 		}
 
@@ -104,12 +104,12 @@ public class TelaCompras {
 				carrosMarcasModelos[0]);
 
 		if (carroEscolhido != null) {
-			// avanÁa a tela, mostra detalhes do carro
+			// avan√ßa a tela, mostra detalhes do carro
 			String[] escolha = new String[2];
-			escolha = carroEscolhido.split(" ∑");
+			escolha = carroEscolhido.split(" ¬∑");
 			int x = Integer.parseInt(escolha[0]);
 
-			return carros[x]; // deve ser os dados do veÌculo escolhido
+			return carros[x]; // deve ser os dados do ve√≠culo escolhido
 
 		} else {
 			return null;
