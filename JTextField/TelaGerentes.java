@@ -10,7 +10,7 @@ public class TelaGerentes {
 		do {
 			Object[] options = { "Cadastro", "Venda", "Relatório", "Voltar" };
 
-			switch (JOptionPane.showOptionDialog(null, "Deseja realizar qual operação?", "IndraCarShopApp",
+			switch (JOptionPane.showOptionDialog(null, "Deseja realizar qual operação?", "Tela Gerentes - IndraCarShopApp",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0])) {
 
 			case 0:

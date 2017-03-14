@@ -27,7 +27,7 @@ public class TelaCadClientes {
 			Object[] message = { "Digite seu nome: ", nome, "Digite seu CPF: ", cpf, "Digite seu telefone: ", telefone,
 					"Digite o usuário: ", user, "Digite a senha:", password, "Confirme a senha:", password1 };
 
-			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de novo usuário",
+			int option = JOptionPane.showConfirmDialog(null, message, "Cadastro de cliente - IndraCarShopApp",
 					JOptionPane.OK_CANCEL_OPTION);
 
 			if (option == JOptionPane.OK_OPTION) {
@@ -56,12 +56,12 @@ public class TelaCadClientes {
 							System.out.println(ioe.getStackTrace());
 						}
 						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.",
-								"Cadastro de novo cliente", JOptionPane.INFORMATION_MESSAGE);
+								"Cadastro de cliente - IndraCarShopApp", JOptionPane.INFORMATION_MESSAGE);
 						repetidor = 1;
 					}
 				} catch (java.lang.NumberFormatException x) {
-					JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!", "Login",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!",
+							"Cadastro de cliente - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
 				}
 
 			} else {
