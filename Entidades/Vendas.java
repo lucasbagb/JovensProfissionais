@@ -19,7 +19,14 @@ import Validadores.ValidarCPF;
  *
  */
 public class Vendas {
-
+	
+	public Vendas(Carro carro, Cliente cliente, int quantidadeParcelas){
+		this.setCarro(carro);
+		this.setCliente(cliente);
+		this.setQuantidadeParcelas(quantidadeParcelas);
+		this.setData();
+	}
+	
 	// variáveis
 	// ------------------------------------------------------------------
 	private Carro carro;
@@ -79,11 +86,21 @@ public class Vendas {
 	 * @return data de transação formatada.
 	 */
 	public String getData() {
-		return "Data da transação: " + data[0] + "/" + data[1] + "/" + data[2] + " - " + data[3] + ":" + data[4] + ".";
+		String mes = String.format("%02d", data[1]);
+		String dia = String.format("%02d", data[0]);
+		String hora = String.format("%02d", data[3]);
+		String minuto = String.format("%02d", data[4]);
+		
+		return "Data da transação: " + dia + "/" + mes + "/" + data[2] + " - " + hora + ":" + minuto + ".";
 	}
 	
 	public String getDataArquivo(){
-		return data[2] + "." + data[1] + "." + data[0] + " - " + data[3] + "h" + data[4];
+		String mes = String.format("%02d", data[1]);
+		String dia = String.format("%02d", data[0]);
+		String hora = String.format("%02d", data[3]);
+		String minuto = String.format("%02d", data[4]);
+		
+		return data[2] + "." + mes + "." + dia + " - " + hora + "h" + minuto;
 	}
 
 	// métodos
@@ -91,30 +108,36 @@ public class Vendas {
 
 	/**
 	 * Mostra sequencialmente os parâmetros-padrão de uma venda, em formato
-	 * adaptado para inserção em arquivos <code>.csv</code>
+	 * adaptado para inserção em arquivos <code>.txt</code>
 	 * 
 	 * @return parâmetros da venda, separados por <code>;</code>
 	 */
 	public String toStringVendas() {
 		
-		return 	(	"_________________________________________________________________________________\n \n"
-				+ 	"---------------------------> INDRA CAR SHOP APP v2.0 <---------------------------\n"
-				+ 	"_________________________________________________________________________________\n \n"
-				+ 	" < " + this.getData() + " >\n \n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
-				+	" Cliente: " + this.cliente.getNome() + "\n \n"
-				+	" Contato: " + this.cliente.getTelefone() + "\n \n"
-				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\n \n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
-				+	" Carro: < " + this.carro.getMarca() + this.carro.getModelo() + " >\n \n"
-				+	" Placa: < " + this.carro.getPlaca() + " >\n \n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n"
-				+	" Valor da NF: < R$" + this.carro.getPreco() + "\n \n"
-				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\n \n"
-				+	"_________________________________________________________________________________\n \n \n"
-				+	"..............Assinatura do gerente responsável:.....x_____________..............\n \n \n"
-				+	"..............Assinatura do cliente:.................x_____________..............\n \n"
-				+	"_________________________________________________________________________________");
+		this.setData();
+		String preco = String.format("%.2f", (this.carro.getPreco()));
+		String parcela = String.format("%.2f", (this.carro.getPreco() / this.quantidadeParcelas));
+		
+		return 	(	"_________________________________________________________________________________\r\n \r\n"
+				+ 	"---------------------------> INDRA CAR SHOP APP v2.0 <---------------------------\r\n"
+				+ 	"_________________________________________________________________________________\r\n \r\n"
+				+ 	" < " + this.getData().replace(".", "") + " >\r\n \r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
+				+	" Cliente: " + this.cliente.getNome() + "\r\n \r\n"
+				+	" Contato: " + this.cliente.getTelefone() + "\r\n \r\n"
+				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\r\n \r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
+				+	" Carro: < " + this.carro.getMarca() + " - " + this.carro.getModelo() + " >\r\n \r\n"
+				+	" Placa: < " + this.carro.getPlaca() + " >\r\n \r\n"
+				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n \r\n"
+				+	" Valor da NF: < R$" + preco + " >\r\n \r\n"
+				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\r\n \r\n"
+				+	" Valor das parcelas: < R$" + parcela + " >\r\n \r\n"
+				+	"_________________________________________________________________________________\r\n \r\n \r\n"
+				+	"..............Assinatura do gerente responsável:.....x_____________..............\r\n \r\n \r\n"
+				+	"..............Assinatura do cliente:.................x_____________..............\r\n \r\n"
+				+	"_________________________________________________________________________________\r\n"
+				+ 	" Tower III - Guido Caloi Avenue, nº 1002 - Jd. São Luís, São Paulo/SP, 05802-140");
 		
 		
 		
