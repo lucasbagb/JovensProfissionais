@@ -13,6 +13,8 @@ import java.util.InputMismatchException;
  */
 public class ValidarCPF {
 
+	static String cpf;
+
 	/**
 	 * Efetua validação real do CPF, desde checar inserção de formato de número
 	 * único ("<em>111...</em>") até checagem de peso e conversão,
@@ -23,7 +25,12 @@ public class ValidarCPF {
 	 * @return <b>boolean</b> que indicará o sucerro (<b>true</b>) ou falha
 	 *         (<b>false</b>) na validação.
 	 */
-	public static boolean isCpf(String cpf) {
+	public static boolean isCpf(String CPF) {
+
+		if (CPF.contains(".")) {
+			cpf = CPF.replace(".", "").replace("-", "");
+		}
+
 		/*
 		 * Considera se houve inserção de sequências de números iguais, ou se a
 		 * String inserida possui um tamanho diferente do permitido.
@@ -89,7 +96,7 @@ public class ValidarCPF {
 			} else {
 				return (false);
 			}
-		} catch (InputMismatchException erro) {
+		} catch (InputMismatchException ime) {
 			return (false);
 		}
 	}
