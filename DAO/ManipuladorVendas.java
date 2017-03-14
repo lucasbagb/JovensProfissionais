@@ -75,10 +75,19 @@ public class ManipuladorVendas extends ManipuladorArquivo {
 	}
 
 
-	public String lerVenda() throws IOException {
+	public String lerArquivoVenda() throws IOException {
 		this.lerArquivo.reset();
 		String linha = lerLinha();
 		while (!linha.contains("Guido Caloi Avenue, nº 1002 - Jd")) {
+			linha += lerLinha() + "\n";
+		}
+		return linha;
+	}
+	
+	public String lerVenda() throws IOException {
+		this.lerArquivo.reset();
+		String linha = lerLinha();
+		while (linha != null) {
 			linha += lerLinha() + "\n";
 		}
 		return linha;
