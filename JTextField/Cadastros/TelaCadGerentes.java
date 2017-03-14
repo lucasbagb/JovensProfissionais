@@ -51,6 +51,7 @@ public class TelaCadGerentes {
 						try {
 							mg.escreveCadastros(gerente.toString());
 							mg.fechaManipulador();
+							repeticao = 1;
 						} catch (IOException ioe) {
 							System.out.println(ioe.getStackTrace());
 						}
