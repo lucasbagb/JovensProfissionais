@@ -28,15 +28,15 @@ public class ManipuladorVendedores extends ManipuladorArquivo {
 		this.lerArquivo.reset();
 		String linha = lerLinha();
 		
-			for (int i = 0; i < qntdLinhas; i++) {
-				if (linha != null) {
-					String[] c = linha.split(";");
-					for (int j = 0; j < this.colunas; j++) {
-						this.vendedores[i][j] = c[j];
-					}
-					linha = lerLinha();
+		for (int i = 0; i < qntdLinhas; i++) {
+			if (linha != null) {
+				String[] c = linha.split(";");
+				for (int j = 0; j < this.colunas; j++) {
+					this.vendedores[i][j] = c[j];
 				}
+				linha = lerLinha();
 			}
+		}
 	}
 	
 	@Override
