@@ -21,14 +21,15 @@ public class TelaLogin {
 
 		Object[] message = { "Digite o usuário: ", user, "Digite a senha:", password };
 
-		int option = JOptionPane.showConfirmDialog(null, message, "Login", JOptionPane.OK_CANCEL_OPTION);
+		int option = JOptionPane.showConfirmDialog(null, message, "Login - IndraCarShopApp",
+				JOptionPane.OK_CANCEL_OPTION);
 
 		int instancia = percorreLogins(user, password);
 
 		if ((option == JOptionPane.OK_OPTION) && (instancia == 1)) {
 			JOptionPane.showMessageDialog(null,
-					"Bem-vindo, desejamos que tenha uma ótima experiência em nosso aplicativo.", "Login",
-					JOptionPane.INFORMATION_MESSAGE);
+					"Bem-vindo, desejamos que tenha uma ótima experiência em nosso aplicativo.",
+					"Login - IndraCarShopApp", JOptionPane.INFORMATION_MESSAGE);
 			TelaCompras tc = new TelaCompras();
 			tc.JTPCompras(userData);
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 2)) {
@@ -38,22 +39,22 @@ public class TelaLogin {
 			TelaVendedores tv = new TelaVendedores();
 			tv.JTPVendedores(userData);
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 4)) {
-			JOptionPane.showMessageDialog(null, "Senha e/ou username incorretos. Tente novamente.", "Login",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Senha e/ou username incorretos. Tente novamente.",
+					"Login - IndraCarShopApp", JOptionPane.INFORMATION_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 5)) {
-			JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!", "Login",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "A senha deve conter apenas algarismos numéricos!",
+					"Login - IndraCarShopApp", JOptionPane.ERROR_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 6)) {
-			JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Login",
+			JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Login - IndraCarShopApp",
 					JOptionPane.ERROR_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
 		} else if ((option == JOptionPane.OK_OPTION) && (instancia == 0)) {
-			JOptionPane.showMessageDialog(null, "Usuário inválido, verifique os seus dados.", "Login",
+			JOptionPane.showMessageDialog(null, "Usuário inválido, verifique os seus dados.", "Login - IndraCarShopApp",
 					JOptionPane.ERROR_MESSAGE);
 			TelaLogin tl = new TelaLogin();
 			tl.JTPLogin();
@@ -115,7 +116,7 @@ public class TelaLogin {
 
 							userData = linha.toString();
 							return 2;
-						} else if (j == mg.gerentes.length - 1){
+						} else if (j == mg.gerentes.length - 1) {
 							continue;
 						}
 					}
@@ -142,7 +143,7 @@ public class TelaLogin {
 
 							userData = linha.toString();
 							return 3;
-						} else if (k == mv.vendedores.length - 1){
+						} else if (k == mv.vendedores.length - 1) {
 							return 4;
 						}
 					}

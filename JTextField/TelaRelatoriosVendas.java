@@ -9,7 +9,7 @@ import DAO.ManipuladorVendas;
 
 public class TelaRelatoriosVendas {
 
-	public void JTPRelatorios() {
+	public void JTPRelatoriosVendas() {
 
 		// implementação do acesso ao banco
 		ManipuladorVendas mv = new ManipuladorVendas();
@@ -19,21 +19,21 @@ public class TelaRelatoriosVendas {
 		do {
 
 			TelaRelatoriosVendas trv = new TelaRelatoriosVendas();
-			String caminhoRelatorio = trv.JOPRelatorios(listaVendas);
+			String caminhoRelatorio = trv.JOPRelatoriosVendas(listaVendas);
 
 			if (caminhoRelatorio != null) {
-				
+
 				ManipuladorVendas report = new ManipuladorVendas(caminhoRelatorio);
-				
+				String relatorio = null;
+
 				try {
-					String relatorio = report.lerVenda();
+					relatorio = report.lerVenda();
 					report.fechaManipulador();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
-				JOptionPane.showMessageDialog(null,
-						"Bem-vindo, desejamos que tenha uma ótima experiência em nosso aplicativo.", "Relatórios de Vendas - IndraCarShopApp",
+
+				JOptionPane.showMessageDialog(null, relatorio, "Relatórios de Vendas - IndraCarShopApp",
 						JOptionPane.INFORMATION_MESSAGE);
 
 			} else {
@@ -42,7 +42,7 @@ public class TelaRelatoriosVendas {
 		} while (repetidor == 0);
 	}
 
-	private String JOPRelatorios(String[] vendas) {
+	private String JOPRelatoriosVendas(String[] vendas) {
 
 		String[] vendasAnoMesDiaHoraMinuto = new String[vendas.length - 1];
 
@@ -51,8 +51,8 @@ public class TelaRelatoriosVendas {
 				"Relatórios de Vendas - IndraCarShopApp", JOptionPane.QUESTION_MESSAGE, null, vendasAnoMesDiaHoraMinuto,
 				vendasAnoMesDiaHoraMinuto[0]);
 
-		if (vendaEscolhida!= null) {
-			return "C:/Users/lbonazza/workspace/ProjetoProva/Beta/Database/RelatoriosVenda/" + vendaEscolhida + ".txt" ;
+		if (vendaEscolhida != null) {
+			return "C:/Users/lbonazza/workspace/ProjetoProva/Beta/Database/RelatoriosVenda/" + vendaEscolhida + ".txt";
 
 		} else {
 			return null;

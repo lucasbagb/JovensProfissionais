@@ -25,7 +25,7 @@ public class TelaCadCarros {
 		Object[] messages = { "Digite a marca:", marca, "Digite o modelo:", modelo, "Digite a placa:", placa,
 				"Digite o preço de aquisição: R$", preco };
 
-		int option = JOptionPane.showConfirmDialog(null, messages, "Cadastro de novo usuário",
+		int option = JOptionPane.showConfirmDialog(null, messages, "Cadastro de veículos - IndraCarShopApp",
 				JOptionPane.OK_CANCEL_OPTION);
 
 		if (option == JOptionPane.OK_OPTION) {
@@ -44,11 +44,11 @@ public class TelaCadCarros {
 				} catch (IOException ioe) {
 					System.out.println(ioe.getStackTrace());
 				}
-				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Cadastro de novo Carro",
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Cadastro de veículos - IndraCarShopApp",
 						JOptionPane.INFORMATION_MESSAGE);
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Favor preencher todos os campos!", "Cadastro de novo usuário",
+				JOptionPane.showMessageDialog(null, "Favor preencher todos os campos!", "Cadastro de veículos - IndraCarShopApp",
 						JOptionPane.ERROR_MESSAGE);
 			}
 		}

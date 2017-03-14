@@ -28,7 +28,7 @@ public class TelaCompras {
 						dadosCarro[1], " >>>> Apenas por: (R$)", dadosCarro[3],
 						"Deseja prosseguir com a compra deste veículo?" };
 
-				int option = JOptionPane.showConfirmDialog(null, message, "Compra de veículos - IndraCarShopApp",
+				int option = JOptionPane.showConfirmDialog(null, message, "Tela de Compras - IndraCarShopApp",
 						JOptionPane.OK_CANCEL_OPTION);
 
 				if (option == JOptionPane.OK_OPTION) {
@@ -56,7 +56,7 @@ public class TelaCompras {
 
 		JFrame frame = new JFrame("Input Dialog With Multiple Options");
 		String carroEscolhido = (String) JOptionPane.showInputDialog(frame, "Qual carro gostaria de visualizar?",
-				"Compra de veículos - IndraCarShopApp", JOptionPane.QUESTION_MESSAGE, null, carrosMarcasModelos,
+				"Tela de Compras - IndraCarShopApp", JOptionPane.QUESTION_MESSAGE, null, carrosMarcasModelos,
 				carrosMarcasModelos[0]);
 
 		if (carroEscolhido != null) {
