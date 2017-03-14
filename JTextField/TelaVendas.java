@@ -1,17 +1,26 @@
 package JTextField;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import DAO.ManipuladorCarros;
 import DAO.ManipuladorClientes;
+import DAO.ManipuladorVendas;
+import Entidades.Carro;
+import Entidades.Cliente;
 import Entidades.Gerente;
+import Entidades.Vendas;
 import Entidades.Vendedor;
 
 public class TelaVendas {
 
+	Carro carro;
+	Cliente cliente;
 	Gerente gerente = new Gerente(null, null, 0);
 	Vendedor vendedor = new Vendedor(null, null, 0, null);
+	private ManipuladorVendas mv;
 
 	public TelaVendas(String[] funcionario, int gerVer) {
 		if (gerVer == 1) {
@@ -39,12 +48,14 @@ public class TelaVendas {
 			String dadosCliente[] = tv.JOPVendasClientes(listaClientes);
 
 			if (dadosCliente != null) {
-
+				// Settando parâmetros do cliente locament
+				this.cliente = new Cliente(dadosCliente[3], dadosCliente[2], dadosCliente[4], dadosCliente[0], Integer.parseInt(dadosCliente[1]));
+				
 				Object[] message = { "Estes são os dados do cliente: ", " >> Nome:", dadosCliente[2], " >> CPF:",
 						dadosCliente[3], " >> Telefone:", dadosCliente[4], " >> Usuário:", dadosCliente[0],
 						"Os dados estão corretos?" };
 
-				int option = JOptionPane.showConfirmDialog(null, message, "Venda de veículos - IndraCarShopApp",
+				int option = JOptionPane.showConfirmDialog(null, message, "Tela de Vendas - IndraCarShopApp",
 						JOptionPane.OK_CANCEL_OPTION);
 
 				if (option == JOptionPane.OK_OPTION) {
@@ -61,7 +72,7 @@ public class TelaVendas {
 		}
 
 		if (instanciamento == 1) {
-			// implementação do acesso ao banco de carros
+			// Implementação do acesso ao banco de carros
 			ManipuladorCarros mc = new ManipuladorCarros();
 			String[][] listaCarros = mc.carros;
 
@@ -72,19 +83,30 @@ public class TelaVendas {
 				String dadosCarro[] = tc.JOPVendas(listaCarros);
 
 				if (dadosCarro != null) {
+					// Settando parâmetros de carro localmente
+					this.carro = new Carro(dadosCarro[0], dadosCarro[1], dadosCarro[2], Double.parseDouble(dadosCarro[3]));
 
 					Object[] message = { "Estes são os dados do veículo escolhido: ", " >> Marca:", dadosCarro[0],
 							" >> Modelo:", dadosCarro[1], " >>>> Apenas por: (R$)", dadosCarro[3],
 							"Deseja prosseguir com a compra deste veículo?" };
 
-					int option = JOptionPane.showConfirmDialog(null, message, "Compra de veículos - IndraCarShopApp",
+					int option = JOptionPane.showConfirmDialog(null, message, "Tela de Vendas - IndraCarShopApp",
 							JOptionPane.OK_CANCEL_OPTION);
 
 					if (option == JOptionPane.OK_OPTION) {
 
 						// OPERAÇÃO DE VENDA
-						// usar dadosCarro e dadosCliente
-
+						Vendas venda = new Vendas(this.carro, this.cliente, 60);
+						mv = new ManipuladorVendas(venda);
+						mv.escreveVenda(venda);
+						try {
+							mv.lerVenda();
+							mv.fechaManipulador();
+						} catch (IOException ioe) {
+							ioe.printStackTrace();
+						}
+						
+						repetidor = 1;
 					}
 
 				} else {
@@ -106,16 +128,16 @@ public class TelaVendas {
 
 		JFrame frame = new JFrame("Input Dialog With Multiple Options");
 		String carroEscolhido = (String) JOptionPane.showInputDialog(frame, "Qual carro gostaria de visualizar?",
-				"Venda de veículos - IndraCarShopApp", JOptionPane.QUESTION_MESSAGE, null, carrosMarcasModelos,
+				"Tela de Vendas - IndraCarShopApp", JOptionPane.QUESTION_MESSAGE, null, carrosMarcasModelos,
 				carrosMarcasModelos[0]);
 
 		if (carroEscolhido != null) {
-			// avança a tela, mostra detalhes do carro
+			// Avança a tela, mostra detalhes do carro
 			String[] escolha = new String[2];
 			escolha = carroEscolhido.split(" ·");
 			int x = Integer.parseInt(escolha[0]);
 
-			return carros[x]; // deve ser os dados do veículo escolhido
+			return carros[x]; // Dados do veículo escolhido
 
 		} else {
 			return null;
@@ -135,7 +157,7 @@ public class TelaVendas {
 
 		JFrame frame = new JFrame("Input Dialog With Multiple Options");
 		String clienteEscolhido = (String) JOptionPane.showInputDialog(frame,
-				"Qual cliente gostaria de realizar a compra?", "Venda de veículos - IndraCarShopApp",
+				"Qual cliente gostaria de realizar a compra?", "Tela de Vendas - IndraCarShopApp",
 				JOptionPane.QUESTION_MESSAGE, null, clientesNomeCpf, clientesNomeCpf[0]);
 
 		if (clienteEscolhido != null) {
@@ -144,7 +166,7 @@ public class TelaVendas {
 			escolha = clienteEscolhido.split(" ·");
 			int x = Integer.parseInt(escolha[0]);
 
-			return clientes[x]; // deve ser os dados do veículo escolhido
+			return clientes[x]; // deve ser os dados do cliente escolhido
 
 		} else {
 			return null;
