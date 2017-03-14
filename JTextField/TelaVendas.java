@@ -65,7 +65,7 @@ public class TelaVendas {
 				}
 
 			} else {
-				repetidor2 = 1;
+				repetidor2 = 2;
 			}
 		} while (repetidor2 == 0);
 
