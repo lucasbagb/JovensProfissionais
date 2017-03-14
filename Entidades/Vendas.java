@@ -117,25 +117,22 @@ public class Vendas {
 		String preco = String.format("%.2f", (this.carro.getPreco()));
 		String parcela = String.format("%.2f", (this.carro.getPreco() / this.quantidadeParcelas));
 		
-		return 	(	"_____________________________________________________________________________\r\n\r\n"
-				+ 	"---------------------------> INDRA CAR SHOP APP v2.0 <---------------------------\r\n"
-				+ 	"_____________________________________________________________________________\r\n"
-				+ 	" < " + this.getData().replace(".", "") + " >\r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
-				+	" Cliente: " + this.cliente.getNome() + "\r\n"
-				+	" Contato: " + this.cliente.getTelefone() + "\r\n"
-				+	" CPF: " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + "\r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
+		return 	(	"________________________________________________________________________\r\n\r\n"
+				+ 	"-----------------------------------------> INDRA CAR SHOP APP v2.0 <-----------------------------------------\r\n"
+				+ 	"________________________________________________________________________\r\n"
+				+ 	" Data da transação: < " + this.getData().replace(".", "") + " >\r\n\r\n"
+				+	" Cliente: < " + this.cliente.getNome() + " >\r\n"
+				+	" Contato: < " + this.cliente.getTelefone() + " >\r\n"
+				+	" CPF: < " + ValidarCPF.imprimecpf(this.cliente.getCpf()) + " >\r\n\r\n"
 				+	" Carro: < " + this.carro.getMarca() + " - " + this.carro.getModelo() + " >\r\n"
-				+	" Placa: < " + this.carro.getPlaca() + " >\r\n"
-				+	"°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\r\n"
+				+	" Placa: < " + this.carro.getPlaca() + " >\r\n\r\n"
 				+	" Valor da NF: < R$" + preco + " >\r\n"
 				+	" Quantidade de parcelas: < " + this.quantidadeParcelas + " >\r\n"
 				+	" Valor das parcelas: < R$" + parcela + " >\r\n"
-				+	"_____________________________________________________________________________\r\n \r\n"
+				+	"________________________________________________________________________\r\n \r\n"
 				+	"  Assinatura do gerente responsável:.....x_______________\r\n \r\n"
-				+	"  Assinatura do cliente:.............................x_______________\r\n"
-				+	"_____________________________________________________________________________\r\n"
+				+	"  Assinatura do cliente:...............................x_______________\r\n"
+				+	"________________________________________________________________________\r\n"
 				+ 	" Tower III - Guido Caloi Avenue, nº 1002 - Jd. São Luís, São Paulo/SP, 05802-140");
 		
 		
