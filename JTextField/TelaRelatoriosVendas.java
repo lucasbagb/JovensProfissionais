@@ -32,7 +32,7 @@ public class TelaRelatoriosVendas {
 				String relatorio = null;
 
 				try {
-					relatorio = report.lerVenda();
+					relatorio = report.lerArquivoVenda();
 					report.fechaManipulador();
 				} catch (IOException e) {
 					e.printStackTrace();

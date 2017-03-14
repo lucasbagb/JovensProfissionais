@@ -65,7 +65,7 @@ public class TelaCompras {
 								mv = new ManipuladorVendas(venda);
 								mv.escreveVenda(venda);
 								try {
-									mv.lerVenda();
+									mv.lerArquivoVenda();
 									mv.fechaManipulador();
 								} catch (IOException ioe) {
 									ioe.printStackTrace();
