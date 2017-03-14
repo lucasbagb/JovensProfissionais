@@ -2,12 +2,14 @@ package DAO;
 
 import java.io.IOException;
 
+import com.sun.javafx.charts.Legend.LegendItem;
+
 import Entidades.Vendas;
 
 public class ManipuladorVendas extends ManipuladorArquivo {
 
 	String[][] vendas;
-	String[] arquivosVendas;
+	public String[] arquivosVendas;
 
 	public ManipuladorVendas(Vendas venda) {
 		super("C:/Users/lbonazza/workspace/ProjetoProva/Beta/Database/RelatoriosVenda/" + venda.getDataArquivo()
@@ -16,6 +18,10 @@ public class ManipuladorVendas extends ManipuladorArquivo {
 
 	public ManipuladorVendas() {
 		super("C:/Users/lbonazza/ProjetoVenda/Vendas.csv", 1);
+	}
+
+	public ManipuladorVendas(String caminho) {
+		super(caminho);
 	}
 
 	@Override
@@ -49,10 +55,18 @@ public class ManipuladorVendas extends ManipuladorArquivo {
 			}
 		}
 	}
-	
-	public void escreveVenda(Vendas venda){
+
+	public void escreveVenda(Vendas venda) {
 		String linha = venda.toStringVendas();
 		escreverLinha(linha);
+	}
+
+	public String lerVenda() throws IOException {
+		String linha = lerLinha();
+		while (linha != null) {
+			linha += lerLinha() + "\n";
+		}
+		return linha;
 	}
 
 	@Override

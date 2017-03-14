@@ -1,9 +1,11 @@
 package JTextField;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import DAO.ManipuladorCarros;
+import DAO.ManipuladorVendas;
 
 public class TelaRelatoriosVendas {
 
@@ -17,17 +19,22 @@ public class TelaRelatoriosVendas {
 		do {
 
 			TelaRelatoriosVendas trv = new TelaRelatoriosVendas();
-			String dadosRelatorios[] = trv.JOPRelatorios(listaVendas);
+			String caminhoRelatorio = trv.JOPRelatorios(listaVendas);
 
-			if (dadosRelatorios != null) {
+			if (caminhoRelatorio != null) {
 				
-				// caminho do arquivo
+				ManipuladorVendas report = new ManipuladorVendas(caminhoRelatorio);
+				
+				try {
+					String relatorio = report.lerVenda();
+					report.fechaManipulador();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
 				JOptionPane.showMessageDialog(null,
 						"Bem-vindo, desejamos que tenha uma ótima experiência em nosso aplicativo.", "Relatórios de Vendas - IndraCarShopApp",
 						JOptionPane.INFORMATION_MESSAGE);
-
-				// DADOS DA VENDA
 
 			} else {
 				repetidor = 1;
