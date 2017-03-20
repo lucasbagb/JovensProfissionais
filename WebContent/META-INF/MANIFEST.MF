@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: IndraCarShopApp Web Application
+Implementation-Version: 1.0.1-SNAPSHOT
+Built-By: Julio Silva, Lucas Amorim
+Implementation-Vendor-Id: com.indracompany.carshopapp
+Build-Jdk: 1.8.0_121
+Created-By: Julio Silva, Lucas Amorim
+Implementation-Vendor: Indra Sistemas, S.A.
