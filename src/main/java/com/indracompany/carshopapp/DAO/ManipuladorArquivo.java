@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * A classe <code>ManipuladorArquivo</code> � uma classe p�blica e abstrata, que
- * trata explicitamente da manipula��o dos arquivos de extens�o
- * <code>.csv</code> localizados na database local. Al�m de abrir, ler, escrever
- * e fechar arquivos, a classe tamb�m prop�e um modelo de m�todo de
- * <em>transcri��o</em> de arquivos para vari�veis locais, o m�todo abstrato
+ * A classe <code>ManipuladorArquivo</code> é uma classe pública e abstrata, que
+ * trata explicitamente da manipulação dos arquivos de extensão
+ * <code>.csv</code> localizados na database local. Além de abrir, ler, escrever
+ * e fechar arquivos, a classe também propõe um modelo de método de
+ * <em>transcrição</em> de arquivos para variáveis locais, o método abstrato
  * {@link #disponibilizaCadastros()}.
  * 
  * @author Julio Silva, Lucas Amorim
